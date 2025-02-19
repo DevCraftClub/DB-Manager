@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file original="db_manager.ru_RU" datatype="plaintext" source-language="ru" target-language="de">
+    <body>
+      <trans-unit id="1" approved="yes">
+        <source>Работа с базой данных, для правильного экспорта и импорта данных</source>
+        <target state="final">Arbeiten mit der Datenbank für den korrekten Export und Import von Daten</target>
+      </trans-unit>
+      <trans-unit id="2" approved="yes">
+        <source>Управление базой данных</source>
+        <target state="final">Verwaltung der Datenbank</target>
+      </trans-unit>
+      <trans-unit id="3" approved="yes">
+        <source>Настройки</source>
+        <target state="final">Einstellungen</target>
+      </trans-unit>
+      <trans-unit id="4" approved="yes">
+        <source>Настройки бота</source>
+        <target state="final">Bot-Einstellungen</target>
+      </trans-unit>
+      <trans-unit id="5" approved="yes">
+        <source>Сохранить</source>
+        <target state="final">Speichern</target>
+      </trans-unit>
+      <trans-unit id="6" approved="yes">
+        <source>Не заполненые поля!</source>
+        <target state="final">Unvollständige Felder!</target>
+      </trans-unit>
+      <trans-unit id="7" approved="yes">
+        <source>Поля с токеном и ID чата должны быть заполнены!</source>
+        <target state="final">Felder mit Token und Chat-ID müssen ausgefüllt werden!</target>
+      </trans-unit>
+      <trans-unit id="8" approved="yes">
+        <source>Сообщение отправлено!</source>
+        <target state="final">Nachricht gesendet!</target>
+      </trans-unit>
+      <trans-unit id="9" approved="yes">
+        <source>&lt;b&gt;Тестовое сообщение&lt;/b&gt; было отправлено в чат :title: [&lt;a href=&quot;https://t.me/:username:&quot; target=&quot;_blank&quot;&gt;@:username:&lt;/a&gt;].</source>
+        <target state="final">&lt;b&gt;Testnachricht&lt;/b&gt; wurde an den Chat :title: [&lt;a href="https://t.me/:username:" target="_blank"&gt;@:username:&lt;/a&gt;].</target>
+      </trans-unit>
+      <trans-unit id="10" approved="yes">
+        <source>Сообщение не было отправлено!</source>
+        <target state="final">Nachricht wurde nicht gesendet!</target>
+      </trans-unit>
+      <trans-unit id="11" approved="yes">
+        <source>&lt;b&gt;Тестовое сообщение&lt;/b&gt; было не могло быть отправлено при текущих настройках!&lt;br&gt;Проверьте данные и попробуйте снова!&lt;br&gt;&lt;br&gt;&lt;i&gt;Описание ошибки можно увидеть в консоли браузера!&lt;/i&gt;</source>
+        <target state="final">&lt;b&gt;Testnachricht&lt;/b&gt; konnte mit den aktuellen Einstellungen nicht gesendet werden!&lt;br&gt;Überprüfen Sie die Daten und versuchen Sie es erneut!&lt;br&gt;&lt;br&gt;&lt;i&gt;Die Fehlerbeschreibung ist in der Browserkonsole sichtbar!&lt;/i&gt;</target>
+      </trans-unit>
+      <trans-unit id="12" approved="yes">
+        <source>Название</source>
+        <target state="final">Bezeichnung</target>
+      </trans-unit>
+      <trans-unit id="13" approved="yes">
+        <source>Кол-во данных</source>
+        <target state="final">Anzahl der Daten</target>
+      </trans-unit>
+      <trans-unit id="14" approved="yes">
+        <source>Вес</source>
+        <target state="final">Gewicht</target>
+      </trans-unit>
+      <trans-unit id="15" approved="yes">
+        <source>Тип</source>
+        <target state="final">Typ</target>
+      </trans-unit>
+      <trans-unit id="16" approved="yes">
+        <source>Действие</source>
+        <target state="final">Aktion</target>
+      </trans-unit>
+      <trans-unit id="17" approved="yes">
+        <source>Скачать</source>
+        <target state="final">Herunterladen</target>
+      </trans-unit>
+      <trans-unit id="18" approved="yes">
+        <source>Удалить</source>
+        <target state="final">Löschen</target>
+      </trans-unit>
+      <trans-unit id="19" approved="yes">
+        <source>Восстановить</source>
+        <target state="final">Wiederherstellen</target>
+      </trans-unit>
+      <trans-unit id="20" approved="yes">
+        <source>Экспортировать</source>
+        <target state="final">Exportieren</target>
+      </trans-unit>
+      <trans-unit id="21" approved="yes">
+        <source>Настройки модуля</source>
+        <target state="final">Modul-Einstellungen</target>
+      </trans-unit>
+      <trans-unit id="22" approved="yes">
+        <source>Основной релиз</source>
+        <target state="final">Hauptveröffentlichung</target>
+      </trans-unit>
+      <trans-unit id="23" approved="yes">
+        <source>Журнал изменений</source>
+        <target state="final">Änderungsprotokoll</target>
+      </trans-unit>
+      <trans-unit id="24" approved="yes">
+        <source>Включена опция экспорта в телеграм, но токен телеграм бота не заполнен!</source>
+        <target state="final">Die Telegram-Exportoption ist aktiviert, aber das Telegram-Bot-Token ist nicht ausgefüllt!</target>
+      </trans-unit>
+      <trans-unit id="25" approved="yes">
+        <source>Включена опция экспорта в телеграм, но ID канала/группы не заполнен!</source>
+        <target state="final">Die Telegram-Exportoption ist aktiviert, aber die Kanal-/Gruppen-ID ist nicht ausgefüllt!</target>
+      </trans-unit>
+      <trans-unit id="26" approved="yes">
+        <source>Настройки сохранены</source>
+        <target state="final">Einstellungen gespeichert</target>
+      </trans-unit>
+      <trans-unit id="27" approved="yes">
+        <source>Сообщение отправлено</source>
+        <target state="final">Nachricht gesendet</target>
+      </trans-unit>
+      <trans-unit id="28" approved="yes">
+        <source>Удаление прошло успешно</source>
+        <target state="final">Löschen war erfolgreich</target>
+      </trans-unit>
+      <trans-unit id="29" approved="yes">
+        <source>Файл не найден</source>
+        <target state="final">Datei nicht gefunden</target>
+      </trans-unit>
+      <trans-unit id="30" approved="yes">
+        <source>Не удалось открыть архив</source>
+        <target state="final">Archiv konnte nicht geöffnet werden</target>
+      </trans-unit>
+      <trans-unit id="31" approved="yes">
+        <source>Не удалось открыть архив bzip2</source>
+        <target state="final">BZIP2-Archiv konnte nicht geöffnet werden</target>
+      </trans-unit>
+      <trans-unit id="32" approved="yes">
+        <source>Не удалось создать файл для распаковки</source>
+        <target state="final">Datei für die Extraktion konnte nicht erstellt werden</target>
+      </trans-unit>
+      <trans-unit id="33" approved="yes">
+        <source>Ошибка чтения из архива bzip2</source>
+        <target state="final">Fehler beim Lesen aus dem BZIP2-Archiv</target>
+      </trans-unit>
+      <trans-unit id="34" approved="yes">
+        <source>Восстановление базы данных завершено!</source>
+        <target state="final">Datenbankwiederherstellung abgeschlossen!</target>
+      </trans-unit>
+      <trans-unit id="35" approved="yes">
+        <source>Экспорт базы данных при помощи DB Manager</source>
+        <target state="final">Datenbankexport mit DB Manager</target>
+      </trans-unit>
+      <trans-unit id="36" approved="yes">
+        <source>Ссылка: https://devcraft.club/downloads/db-manager.30/</source>
+        <target state="final">Link: https://devcraft.club/downloads/db-manager.30/</target>
+      </trans-unit>
+      <trans-unit id="37" approved="yes">
+        <source>-- Дата создания:</source>
+        <target state="final">-- Erstellungsdatum:</target>
+      </trans-unit>
+      <trans-unit id="38" approved="yes">
+        <source>-- Сервер:</source>
+        <target state="final">-- Server:</target>
+      </trans-unit>
+      <trans-unit id="39" approved="yes">
+        <source>-- База данных:</source>
+        <target state="final">-- Datenbank:</target>
+      </trans-unit>
+      <trans-unit id="40" approved="yes">
+        <source>-- Таблица:</source>
+        <target state="final">-- Tabelle:</target>
+      </trans-unit>
+      <trans-unit id="41" approved="yes">
+        <source>-- Ключи для таблицы:</source>
+        <target state="final">-- Schlüssel für die Tabelle:</target>
+      </trans-unit>
+      <trans-unit id="42" approved="yes">
+        <source>-- Данные для таблицы:</source>
+        <target state="final">-- Daten für die Tabelle:</target>
+      </trans-unit>
+      <trans-unit id="43" approved="yes">
+        <source>Архивация архива не удалась!</source>
+        <target state="final">Archivierung des Archivs ist fehlgeschlagen!</target>
+      </trans-unit>
+      <trans-unit id="44" approved="yes">
+        <source>BZIP2 сжатие файла не удалось!</source>
+        <target state="final">Dateikompression mit BZIP2 ist fehlgeschlagen!</target>
+      </trans-unit>
+      <trans-unit id="45" approved="yes">
+        <source>Экспортированная база данных</source>
+        <target state="final">Exportierte Datenbank</target>
+      </trans-unit>
+      <trans-unit id="46" approved="yes">
+        <source>Ошибка при отправке файла в Telegram:</source>
+        <target state="final">Fehler beim Senden der Datei an Telegram:</target>
+      </trans-unit>
+      <trans-unit id="47" approved="yes">
+        <source>Создание резервной копии завершено!</source>
+        <target state="final">Backup-Erstellung abgeschlossen!</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
