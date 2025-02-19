@@ -4,191 +4,191 @@
     <body>
       <trans-unit id="1">
         <source>Работа с базой данных, для правильного экспорта и импорта данных</source>
-        <target state="needs-translation">Работа с базой данных, для правильного экспорта и импорта данных</target>
+        <target state="translated">Working with the database for proper data export and import</target>
       </trans-unit>
       <trans-unit id="2">
         <source>Управление базой данных</source>
-        <target state="needs-translation">Управление базой данных</target>
+        <target state="translated">Database management</target>
       </trans-unit>
       <trans-unit id="3">
         <source>Настройки</source>
-        <target state="needs-translation">Настройки</target>
+        <target state="translated">Settings</target>
       </trans-unit>
       <trans-unit id="4">
         <source>Настройки бота</source>
-        <target state="needs-translation">Настройки бота</target>
+        <target state="translated">Bot settings</target>
       </trans-unit>
       <trans-unit id="5">
         <source>Сохранить</source>
-        <target state="needs-translation">Сохранить</target>
+        <target state="translated">Save</target>
       </trans-unit>
       <trans-unit id="6">
         <source>Не заполненые поля!</source>
-        <target state="needs-translation">Не заполненые поля!</target>
+        <target state="translated">Incomplete fields!</target>
       </trans-unit>
       <trans-unit id="7">
         <source>Поля с токеном и ID чата должны быть заполнены!</source>
-        <target state="needs-translation">Поля с токеном и ID чата должны быть заполнены!</target>
+        <target state="translated">Fields with token and chat ID must be filled!</target>
       </trans-unit>
       <trans-unit id="8">
         <source>Сообщение отправлено!</source>
-        <target state="needs-translation">Сообщение отправлено!</target>
+        <target state="translated">Message sent!</target>
       </trans-unit>
       <trans-unit id="9">
         <source>&lt;b&gt;Тестовое сообщение&lt;/b&gt; было отправлено в чат :title: [&lt;a href=&quot;https://t.me/:username:&quot; target=&quot;_blank&quot;&gt;@:username:&lt;/a&gt;].</source>
-        <target state="needs-translation">&lt;b&gt;Тестовое сообщение&lt;/b&gt; было отправлено в чат :title: [&lt;a href="https://t.me/:username:" target="_blank"&gt;@:username:&lt;/a&gt;].</target>
+        <target state="translated">&lt;b&gt;Test message&lt;/b&gt; was sent to chat :title: [&lt;a href=&quot;https://t.me/:username:&quot; target="_blank"&gt;@:username:&lt;/a&gt;].</target>
       </trans-unit>
       <trans-unit id="10">
         <source>Сообщение не было отправлено!</source>
-        <target state="needs-translation">Сообщение не было отправлено!</target>
+        <target state="translated">Message was not sent!</target>
       </trans-unit>
       <trans-unit id="11">
         <source>&lt;b&gt;Тестовое сообщение&lt;/b&gt; было не могло быть отправлено при текущих настройках!&lt;br&gt;Проверьте данные и попробуйте снова!&lt;br&gt;&lt;br&gt;&lt;i&gt;Описание ошибки можно увидеть в консоли браузера!&lt;/i&gt;</source>
-        <target state="needs-translation">&lt;b&gt;Тестовое сообщение&lt;/b&gt; было не могло быть отправлено при текущих настройках!&lt;br&gt;Проверьте данные и попробуйте снова!&lt;br&gt;&lt;br&gt;&lt;i&gt;Описание ошибки можно увидеть в консоли браузера!&lt;/i&gt;</target>
+        <target state="translated">&lt;b&gt;The test message&lt;/b&gt; could not be sent with the current settings!&lt;br&gt;Check the data and try again!&lt;br&gt;&lt;br&gt;&lt;i&gt;Error description can be seen in the browser console!&lt;/i&gt;</target>
       </trans-unit>
       <trans-unit id="12">
         <source>Название</source>
-        <target state="needs-translation">Название</target>
+        <target state="translated">Name</target>
       </trans-unit>
       <trans-unit id="13">
         <source>Кол-во данных</source>
-        <target state="needs-translation">Кол-во данных</target>
+        <target state="translated">Number of data</target>
       </trans-unit>
       <trans-unit id="14">
         <source>Вес</source>
-        <target state="needs-translation">Вес</target>
+        <target state="translated">Weight</target>
       </trans-unit>
       <trans-unit id="15">
         <source>Тип</source>
-        <target state="needs-translation">Тип</target>
+        <target state="translated">Type</target>
       </trans-unit>
       <trans-unit id="16">
         <source>Действие</source>
-        <target state="needs-translation">Действие</target>
+        <target state="translated">Action</target>
       </trans-unit>
       <trans-unit id="17">
         <source>Скачать</source>
-        <target state="needs-translation">Скачать</target>
+        <target state="translated">Download</target>
       </trans-unit>
       <trans-unit id="18">
         <source>Удалить</source>
-        <target state="needs-translation">Удалить</target>
+        <target state="translated">Delete</target>
       </trans-unit>
       <trans-unit id="19">
         <source>Восстановить</source>
-        <target state="needs-translation">Восстановить</target>
+        <target state="translated">Restore</target>
       </trans-unit>
       <trans-unit id="20">
         <source>Экспортировать</source>
-        <target state="needs-translation">Экспортировать</target>
+        <target state="translated">Export</target>
       </trans-unit>
       <trans-unit id="21">
         <source>Настройки модуля</source>
-        <target state="needs-translation">Настройки модуля</target>
+        <target state="translated">Module settings</target>
       </trans-unit>
       <trans-unit id="22">
         <source>Основной релиз</source>
-        <target state="needs-translation">Основной релиз</target>
+        <target state="translated">Main release</target>
       </trans-unit>
       <trans-unit id="23">
         <source>Журнал изменений</source>
-        <target state="needs-translation">Журнал изменений</target>
+        <target state="translated">Changelog</target>
       </trans-unit>
       <trans-unit id="24">
         <source>Включена опция экспорта в телеграм, но токен телеграм бота не заполнен!</source>
-        <target state="needs-translation">Включена опция экспорта в телеграм, но токен телеграм бота не заполнен!</target>
+        <target state="translated">Telegram export option is enabled, but the Telegram bot token is not filled in!</target>
       </trans-unit>
       <trans-unit id="25">
         <source>Включена опция экспорта в телеграм, но ID канала/группы не заполнен!</source>
-        <target state="needs-translation">Включена опция экспорта в телеграм, но ID канала/группы не заполнен!</target>
+        <target state="translated">Telegram export option is enabled, but the channel/group ID is not filled in!</target>
       </trans-unit>
       <trans-unit id="26">
         <source>Настройки сохранены</source>
-        <target state="needs-translation">Настройки сохранены</target>
+        <target state="translated">Settings saved</target>
       </trans-unit>
       <trans-unit id="27">
         <source>Сообщение отправлено</source>
-        <target state="needs-translation">Сообщение отправлено</target>
+        <target state="translated">Message sent</target>
       </trans-unit>
       <trans-unit id="28">
         <source>Удаление прошло успешно</source>
-        <target state="needs-translation">Удаление прошло успешно</target>
+        <target state="translated">Deletion was successful</target>
       </trans-unit>
       <trans-unit id="29">
         <source>Файл не найден</source>
-        <target state="needs-translation">Файл не найден</target>
+        <target state="translated">File not found</target>
       </trans-unit>
       <trans-unit id="30">
         <source>Не удалось открыть архив</source>
-        <target state="needs-translation">Не удалось открыть архив</target>
+        <target state="translated">Failed to open archive</target>
       </trans-unit>
       <trans-unit id="31">
         <source>Не удалось открыть архив bzip2</source>
-        <target state="needs-translation">Не удалось открыть архив bzip2</target>
+        <target state="translated">Failed to open bzip2 archive</target>
       </trans-unit>
       <trans-unit id="32">
         <source>Не удалось создать файл для распаковки</source>
-        <target state="needs-translation">Не удалось создать файл для распаковки</target>
+        <target state="translated">Failed to create file for extraction</target>
       </trans-unit>
       <trans-unit id="33">
         <source>Ошибка чтения из архива bzip2</source>
-        <target state="needs-translation">Ошибка чтения из архива bzip2</target>
+        <target state="translated">Error reading from bzip2 archive</target>
       </trans-unit>
       <trans-unit id="34">
         <source>Восстановление базы данных завершено!</source>
-        <target state="needs-translation">Восстановление базы данных завершено!</target>
+        <target state="translated">Database restoration completed!</target>
       </trans-unit>
       <trans-unit id="35">
         <source>Экспорт базы данных при помощи DB Manager</source>
-        <target state="needs-translation">Экспорт базы данных при помощи DB Manager</target>
+        <target state="translated">Database export using DB Manager</target>
       </trans-unit>
       <trans-unit id="36">
         <source>Ссылка: https://devcraft.club/downloads/db-manager.30/</source>
-        <target state="needs-translation">Ссылка: https://devcraft.club/downloads/db-manager.30/</target>
+        <target state="translated">Link: https://devcraft.club/downloads/db-manager.30/</target>
       </trans-unit>
       <trans-unit id="37">
         <source>-- Дата создания:</source>
-        <target state="needs-translation">-- Дата создания:</target>
+        <target state="translated">-- Creation date:</target>
       </trans-unit>
       <trans-unit id="38">
         <source>-- Сервер:</source>
-        <target state="needs-translation">-- Сервер:</target>
+        <target state="translated">-- Server:</target>
       </trans-unit>
       <trans-unit id="39">
         <source>-- База данных:</source>
-        <target state="needs-translation">-- База данных:</target>
+        <target state="translated">-- Database:</target>
       </trans-unit>
       <trans-unit id="40">
         <source>-- Таблица:</source>
-        <target state="needs-translation">-- Таблица:</target>
+        <target state="translated">-- Table:</target>
       </trans-unit>
       <trans-unit id="41">
         <source>-- Ключи для таблицы:</source>
-        <target state="needs-translation">-- Ключи для таблицы:</target>
+        <target state="translated">-- Keys for table:</target>
       </trans-unit>
       <trans-unit id="42">
         <source>-- Данные для таблицы:</source>
-        <target state="needs-translation">-- Данные для таблицы:</target>
+        <target state="translated">-- Data for table:</target>
       </trans-unit>
       <trans-unit id="43">
         <source>Архивация архива не удалась!</source>
-        <target state="needs-translation">Архивация архива не удалась!</target>
+        <target state="translated">Archiving the archive failed!</target>
       </trans-unit>
       <trans-unit id="44">
         <source>BZIP2 сжатие файла не удалось!</source>
-        <target state="needs-translation">BZIP2 сжатие файла не удалось!</target>
+        <target state="translated">Failed to compress the file with BZIP2!</target>
       </trans-unit>
       <trans-unit id="45">
         <source>Экспортированная база данных</source>
-        <target state="needs-translation">Экспортированная база данных</target>
+        <target state="translated">Exported database</target>
       </trans-unit>
       <trans-unit id="46">
         <source>Ошибка при отправке файла в Telegram:</source>
-        <target state="needs-translation">Ошибка при отправке файла в Telegram:</target>
+        <target state="translated">Error sending file to Telegram:</target>
       </trans-unit>
       <trans-unit id="47">
         <source>Создание резервной копии завершено!</source>
-        <target state="needs-translation">Создание резервной копии завершено!</target>
+        <target state="translated">Backup creation completed!</target>
       </trans-unit>
     </body>
   </file>
