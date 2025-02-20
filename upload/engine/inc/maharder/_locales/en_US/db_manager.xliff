@@ -36,7 +36,7 @@
       </trans-unit>
       <trans-unit id="9">
         <source>&lt;b&gt;Тестовое сообщение&lt;/b&gt; было отправлено в чат :title: [&lt;a href=&quot;https://t.me/:username:&quot; target=&quot;_blank&quot;&gt;@:username:&lt;/a&gt;].</source>
-        <target state="translated">&lt;b&gt;Test message&lt;/b&gt; was sent to chat :title: [&lt;a href=&quot;https://t.me/:username:&quot; target="_blank"&gt;@:username:&lt;/a&gt;].</target>
+        <target state="translated">&lt;b&gt;Test message&lt;/b&gt; was sent to chat :title: [&lt;a href="https://t.me/:username:" target="_blank"&gt;@:username:&lt;/a&gt;].</target>
       </trans-unit>
       <trans-unit id="10">
         <source>Сообщение не было отправлено!</source>
