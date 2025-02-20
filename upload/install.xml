@@ -3,7 +3,7 @@
 	<name>DB Manager</name>
 	<description>Работа с базой данных, для правильного экспорта и импорта данных</description>
 	<icon>engine/inc/maharder/_modules/db_manager/assets/icon.png</icon>
-	<version>180.1.0</version>
+	<version>180.1.1</version>
 	<dleversion>18.0</dleversion>
 	<versioncompare>greater</versioncompare>
 	<upgradeurl></upgradeurl>
@@ -11,8 +11,8 @@
 	<needplugin></needplugin>
 	<mnotice>1</mnotice>
 	<mysqlinstall><![CDATA[]]></mysqlinstall>
-	<mysqlupgrade><![CDATA[INSERT INTO {prefix}_admin_sections (name, title, descr, icon, allow_groups) VALUES ('db_manager', 'DB Manager v180.1.0', 'Работа с базой данных, для правильного экспорта и импорта данных', 'engine/inc/maharder/_modules/db_manager/assets/icon.png', '1, 2') ON DUPLICATE KEY UPDATE title = 'DB Manager v180.1.0';]]></mysqlupgrade>
-	<mysqlenable><![CDATA[INSERT INTO {prefix}_admin_sections (name, title, descr, icon, allow_groups) VALUES ('db_manager', 'DB Manager v180.1.0', 'Работа с базой данных, для правильного экспорта и импорта данных', 'engine/inc/maharder/_modules/db_manager/assets/icon.png', '1, 2') ON DUPLICATE KEY UPDATE title = 'DB Manager v180.1.0';]]></mysqlenable>
+	<mysqlupgrade><![CDATA[INSERT INTO {prefix}_admin_sections (name, title, descr, icon, allow_groups) VALUES ('db_manager', 'DB Manager v180.1.1', 'Работа с базой данных, для правильного экспорта и импорта данных', 'engine/inc/maharder/_modules/db_manager/assets/icon.png', '1, 2') ON DUPLICATE KEY UPDATE title = 'DB Manager v180.1.1';]]></mysqlupgrade>
+	<mysqlenable><![CDATA[INSERT INTO {prefix}_admin_sections (name, title, descr, icon, allow_groups) VALUES ('db_manager', 'DB Manager v180.1.1', 'Работа с базой данных, для правильного экспорта и импорта данных', 'engine/inc/maharder/_modules/db_manager/assets/icon.png', '1, 2') ON DUPLICATE KEY UPDATE title = 'DB Manager v180.1.1';]]></mysqlenable>
 	<mysqldisable><![CDATA[DELETE FROM {prefix}_admin_sections WHERE name = 'db_manager';]]></mysqldisable>
 	<mysqldelete><![CDATA[DELETE FROM {prefix}_admin_sections WHERE name = 'db_manager';]]></mysqldelete>
 	<phpinstall><![CDATA[]]></phpinstall>
