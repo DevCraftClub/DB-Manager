@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dleplugin>
+	<name>DB Manager</name>
+	<description>Работа с базой данных, для правильного экспорта и импорта данных</description>
+	<icon>engine/inc/maharder/_modules/db_manager/assets/icon.png</icon>
+	<version>180.1.0</version>
+	<dleversion>18.0</dleversion>
+	<versioncompare>greater</versioncompare>
+	<upgradeurl></upgradeurl>
+	<filedelete>1</filedelete>
+	<needplugin></needplugin>
+	<mnotice>1</mnotice>
+	<mysqlinstall><![CDATA[]]></mysqlinstall>
+	<mysqlupgrade><![CDATA[INSERT INTO {prefix}_admin_sections (name, title, descr, icon, allow_groups) VALUES ('db_manager', 'DB Manager v180.1.0', 'Работа с базой данных, для правильного экспорта и импорта данных', 'engine/inc/maharder/_modules/db_manager/assets/icon.png', '1, 2') ON DUPLICATE KEY UPDATE title = 'DB Manager v180.1.0';]]></mysqlupgrade>
+	<mysqlenable><![CDATA[INSERT INTO {prefix}_admin_sections (name, title, descr, icon, allow_groups) VALUES ('db_manager', 'DB Manager v180.1.0', 'Работа с базой данных, для правильного экспорта и импорта данных', 'engine/inc/maharder/_modules/db_manager/assets/icon.png', '1, 2') ON DUPLICATE KEY UPDATE title = 'DB Manager v180.1.0';]]></mysqlenable>
+	<mysqldisable><![CDATA[DELETE FROM {prefix}_admin_sections WHERE name = 'db_manager';]]></mysqldisable>
+	<mysqldelete><![CDATA[DELETE FROM {prefix}_admin_sections WHERE name = 'db_manager';]]></mysqldelete>
+	<phpinstall><![CDATA[]]></phpinstall>
+	<phpupgrade><![CDATA[]]></phpupgrade>
+	<phpenable><![CDATA[]]></phpenable>
+	<phpdisable><![CDATA[]]></phpdisable>
+	<phpdelete><![CDATA[]]></phpdelete>
+	<notice><![CDATA[<ul><li><b>Ссылка на плагин</b>: <a href="https://devcraft.club/downloads/db-manager.30/" target="_blank">перейти</a></li><li><b>Документация</b>: <a href="https://readme.devcraft.club/latest/dev/db_manager/install/" target="_blank">перейти</a></li></ul>]]></notice>
+	<file name="engine/inc/maharder/_includes/extras/paths.php">
+		<operation action="before">
+			<searchcode><![CDATA[			 // Custom paths //]]></searchcode>
+			<replacecode><![CDATA[// DB Manager
+	MH_MODULES . '/db_manager/utils',
+	// DB Manager]]></replacecode>
+			<enabled>1</enabled>
+		</operation>
+	</file>
+</dleplugin>
