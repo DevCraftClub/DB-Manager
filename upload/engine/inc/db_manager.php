@@ -20,7 +20,7 @@ use Symfony\Bridge\Twig\Extension\TranslationExtension;
 
 $modInfo = [
 	'module_name'        => 'DB Manager',
-    'module_version'     => '180.1.0',
+    'module_version'     => '180.1.1',
     'module_description' => __('Работа с базой данных, для правильного экспорта и импорта данных'),
     'module_code'        => 'db_manager',
     'module_id'          => 4,
