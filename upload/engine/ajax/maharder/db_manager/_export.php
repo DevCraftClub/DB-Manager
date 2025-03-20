@@ -150,20 +150,20 @@ foreach ($parsedTables as $table) {
 }
 
 $sql_file_name = DBNAME . '_' . (new DateTime())->format('Y_m_d_H_i_s') . '_' . count($parsedTables) . '_tables';
+$sql_file = DataManager::joinPaths(ROOT_DIR,$settings['export_path'], "{$sql_file_name}.sql");
 
 file_put_contents(
-	DataManager::joinPaths($settings['export_path'], "{$sql_file_name}.sql"),
+	$sql_file,
 	implode(PHP_EOL, array_filter($createStrings, fn($sql) => $sql != "")),
 	LOCK_EX
 );
 
 if ($settings['zip_data'] == 'zip') {
 	$zip         = new ZipArchive();
-	$zipFileName = DataManager::joinPaths($settings['export_path'], "{$sql_file_name}.zip");
+	$zipFileName = str_replace('sql', 'zip', $sql_file);
 
 	if ($zip->open($zipFileName, ZipArchive::CREATE | ZipArchive::OVERWRITE) === true) {
-		$sqlFilePath = DataManager::joinPaths($settings['export_path'], "{$sql_file_name}.sql");
-		$zip->addFile($sqlFilePath, "{$sql_file_name}.sql");
+		$zip->addFile($sql_file, "{$sql_file_name}.sql");
 		$zip->close();
 
 	} else {
@@ -174,10 +174,9 @@ if ($settings['zip_data'] == 'zip') {
 
 if ($settings['zip_data'] == 'bzip2') {
 
-	$bzipFileName = DataManager::joinPaths($settings['export_path'], "{$sql_file_name}.bz2");
-	$sqlFilePath  = DataManager::joinPaths($settings['export_path'], "{$sql_file_name}.sql");
+	$bzipFileName = str_replace('sql', 'bz2', $sql_file);
 
-	$fileContents = file_get_contents($sqlFilePath);
+	$fileContents = file_get_contents($sql_file);
 
 	if ($fileContents === false || file_put_contents($bzipFileName, bzcompress($fileContents, 9)) === false) {
 		echo (new ErrorResponseAjax())->setData(__('BZIP2 сжатие файла не удалось!'))->send();
@@ -223,7 +222,7 @@ if ($settings['export_to_telegram']) {
 }
 
 if ($settings['zip_data'] !== 'raw') {
-	unlink(DataManager::joinPaths($settings['export_path'], "{$sql_file_name}.sql"));
+	unlink($sql_file);
 }
 
 echo (new SuccessResponseAjax())->setData(__('Создание резервной копии завершено!'))->setRedirect(
