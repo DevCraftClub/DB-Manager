@@ -237,11 +237,10 @@ class SqlExporter {
 			$pattern = '/CREATE\s+OR\s+REPLACE\s+TABLE\s+(`?\w+`?)/i';
 			if (preg_match($pattern, $sql, $matches)) {
 				$tableName  = $matches[1];
-				$createPart = preg_replace($pattern,
+
+				return preg_replace($pattern,
 					"CREATE TABLE $tableName",
 					$sql);
-
-				return "DROP TABLE IF EXISTS $tableName;\n" . $createPart;
 			}
 		}
 
