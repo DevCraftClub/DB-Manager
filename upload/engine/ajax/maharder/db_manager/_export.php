@@ -10,112 +10,50 @@ if (!defined('DATALIFEENGINE')) {
 $exportData   = filter_var_array($parsedData);
 $parsedTables = [];
 $settings     = DataManager::getConfig('db_manager');
+$dbName       = DBNAME;
+$outputDir    = DataManager::joinPaths(ROOT_DIR, $settings['export_path']);
+DataManager::createDir($outputDir);
+
+SqlExporter::setConfig($settings);
+SqlExporter::setMhAjax($mh_admin);
+
+$dbType = SqlExporter::detectDatabaseType();
+$dbVersion = SqlExporter::getDatabaseVersion();
 
 foreach ($exportData['table'] as $table) {
-	$parser         = new SqlTableParser($table, DBNAME);
+	$parser         = new SqlTableParser($table, $dbName);
 	$parsedTables[] = $parser->getResult();
 }
 
-/**
- * Сортирует таблицы так, чтобы если у таблицы есть родитель (зависимость),
- * то она располагалась в массиве после всех своих родителей.
- *
- * @param ParsedTable[] $tables Массив объектов ParsedTable.
- * @return ParsedTable[] Отсортированный массив.
- * @throws Exception Если обнаружена циклическая зависимость.
- */
-function sortTablesByDependency(array $tables): array {
-	// Создаем отображение: имя таблицы => объект ParsedTable
-	$tableMap = [];
-	foreach ($tables as $table) {
-		$tableMap[$table->getName()] = $table;
-	}
-
-	// Инициализируем in-degree (число зависимостей) для каждой таблицы.
-	$inDegree = [];
-	foreach ($tables as $table) {
-		$inDegree[$table->getName()] = 0;
-	}
-
-	// Для каждой таблицы увеличиваем in-degree, если она зависит от другой,
-	// которая присутствует в нашем списке.
-	foreach ($tables as $table) {
-		$parents = $table->getParent();
-		foreach ($parents as $parentName) {
-			// Учитываем только те зависимости, для которых присутствует соответствующая таблица
-			if (isset($tableMap[$parentName])) {
-				$inDegree[$table->getName()]++;
-			}
-		}
-	}
-
-	// Собираем все таблицы с in-degree = 0 (нет зависимостей)
-	$queue = [];
-	foreach ($inDegree as $name => $degree) {
-		if ($degree === 0) {
-			$queue[] = $tableMap[$name];
-		}
-	}
-
-	$sorted = [];
-
-	// Алгоритм Кана: пока есть таблицы без зависимостей, удаляем их и уменьшаем in-degree у зависимых.
-	while (!empty($queue)) {
-		// Извлекаем таблицу из очереди
-		$current = array_shift($queue);
-		$sorted[] = $current;
-
-		// Для каждой таблицы, которая зависит от текущей, уменьшаем in-degree
-		foreach ($tables as $table) {
-			// Если текущая таблица является родителем для $table
-			if (in_array($current->getName(), $table->getParent(), true)) {
-				$inDegree[$table->getName()]--;
-				// Если зависимостей больше не осталось – добавляем таблицу в очередь
-				if ($inDegree[$table->getName()] === 0) {
-					$queue[] = $tableMap[$table->getName()];
-				}
-			}
-		}
-	}
-
-	// Если количество отсортированных таблиц меньше исходного,
-	// значит, в зависимостях обнаружен цикл.
-	if (count($sorted) !== count($tables)) {
-		throw new Exception('Циклическая зависимость обнаружена между таблицами.');
-	}
-
-	return $sorted;
-}
-
-$parsedTables = sortTablesByDependency($parsedTables);
+$parsedTables = SqlExporter::sortTablesByDependency($parsedTables);
 
 $createStrings = [];
 $createStrings[] = '-- ------------------------------------------------------ --';
 $createStrings[] = '--                                                        --';
-$createStrings[] = '-- ' . __('Экспорт базы данных при помощи DB Manager') . '              --';
-$createStrings[] = '-- ' . __('Ссылка: https://devcraft.club/downloads/db-manager.30/') . ' --';
+$createStrings[] = '-- ' . __('Экспорт базы данных при помощи DB Manager');
+$createStrings[] = '-- ' . __('Ссылка: https://devcraft.club/downloads/db-manager.30/');
 $createStrings[] = '--                                                        --';
 $createStrings[] = '-- ------------------------------------------------------ --';
 $createStrings[] = __('-- Дата создания: ') . date('r');
-$createStrings[] = __("-- Сервер: ") . DBHOST;
+$createStrings[] = __("-- Сервер: ") . $dbName;
+$createStrings[] = __("-- Тип базы данных: ") . strtoupper($dbType) . ' ' . $dbVersion;
 $createStrings[] = '-- ------------------------------------------------------ --' . PHP_EOL;
-$createStrings[] = "/*!40030 SET NAMES UTF8 */;";
-$createStrings[] = "/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;";
-$createStrings[] = "/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;";
-$createStrings[] = "/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;";
-$createStrings[] = "/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;";
-$createStrings[] = "/*!40103 SET TIME_ZONE='" . date('P') . "' */;";
-$createStrings[] = "/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;";
-$createStrings[] = "/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;";
-$createStrings[] = "/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;";
-$createStrings[] = "/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;" . PHP_EOL;
+$compatibleHeaders = SqlExporter::generateCompatibleHeaders();
+$createStrings = array_merge($createStrings, $compatibleHeaders);
 $createStrings[] = "--";
-$createStrings[] = __("-- База данных: ") . DBNAME ;
+$createStrings[] = __("-- База данных: ") . $dbName ;
 $createStrings[] = '--';
-$createStrings[] = $mh_admin->load_data(DBNAME, [
-	'sql' => "SHOW CREATE DATABASE `" . DBNAME . "`"
-])[0]['Create Database'] . ";";
-$createStrings[] = 'USE ' . DBNAME . ';';
+
+$createDbSql = $mh_admin->load_data($dbName, [
+        'sql' => "SHOW CREATE DATABASE `" . $dbName . "`"
+    ])[0]['Create Database'] . ";";
+if (SqlExporter::supportsCreateOrReplace()) {
+    $createStrings[] = str_replace('CREATE DATABASE', 'CREATE OR REPLACE DATABASE', $createDbSql);
+} else {
+    $createStrings[] = str_replace('CREATE DATABASE', 'CREATE DATABASE IF NOT EXISTS', $createDbSql);
+}
+
+$createStrings[] = 'USE ' . $dbName . ';';
 $createStrings[] = '--' . PHP_EOL;
 
 
@@ -123,7 +61,11 @@ foreach ($parsedTables as $table) {
 	$createStrings[] = "--";
 	$createStrings[] = __("-- Таблица: ") . $table->getName() ;
 	$createStrings[] = '--';
-	$createStrings[] = $table->generateSql($settings['key_export'] === 'after');
+
+    $tableSql = $table->generateSql($settings['key_export'] === 'after');
+    $tableSql = SqlExporter::fixSqlCompatibility($tableSql);
+
+    $createStrings[] = $tableSql;
 }
 
 if ($settings['key_export'] === 'down') {
@@ -134,12 +76,15 @@ if ($settings['key_export'] === 'down') {
 			$createStrings[] = '--';
 		}
 		foreach ($table->getIndexes() as $index) {
-			$createStrings[] = $index->generateSql();
+            $indexSql = $index->generateSql();
+            $indexSql = SqlExporter::fixSqlCompatibility($indexSql);
+            $createStrings[] = $indexSql;
 		}
 	}
 	$createStrings[] = PHP_EOL;
 }
 $createStrings[] = PHP_EOL;
+
 foreach ($parsedTables as $table) {
 	if (count($table->getValues()) > 0) {
 		$createStrings[] = "--";
@@ -149,8 +94,10 @@ foreach ($parsedTables as $table) {
 	$createStrings[] = $table->getSqlValues($settings['values_export_type'] === 'group') . PHP_EOL;
 }
 
-$sql_file_name = DBNAME . '_' . (new DateTime())->format('Y_m_d_H_i_s') . '_' . count($parsedTables) . '_tables';
-$sql_file = DataManager::joinPaths(ROOT_DIR,$settings['export_path'], "{$sql_file_name}.sql");
+$createStrings = array_merge($createStrings, SqlExporter::generateFooter());
+
+$sql_file_name = $dbName . '_' . (new DateTime())->format('Y_m_d_H_i_s') . '_' . count($parsedTables) . '_tables';
+$sql_file = DataManager::joinPaths(ROOT_DIR, $settings['export_path'], "{$sql_file_name}.sql");
 
 file_put_contents(
 	$sql_file,
@@ -200,7 +147,7 @@ if ($settings['export_to_telegram']) {
 		curl_setopt($ch, CURLOPT_POSTFIELDS, [
 			'chat_id'  => (int) $settings['tg_chat'],
 			'document' => $fileToSend,
-			'caption'  => __('Экспортированная база данных') . ": {$sql_file_name}"
+			'caption'  => __('Экспортированная база данных') . ": ({$dbType}): {$sql_file_name}"
 		]);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 

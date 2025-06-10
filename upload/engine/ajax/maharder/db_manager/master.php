@@ -27,14 +27,15 @@ switch ($method) {
 	case 'settings':
 
 		$settingsData = filter_var_array($parsedData, [
-			'export_path'        => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
-			'export_to_telegram' => FILTER_VALIDATE_BOOL,
-			'key_export'         => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
-			'values_export'      => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
-			'values_export_type' => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
-			'zip_data'           => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
-			'tg_token'           => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
-			'tg_chat'            => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
+			'export_path'           => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
+			'export_compatibility'  => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
+			'export_to_telegram'    => FILTER_VALIDATE_BOOL,
+			'key_export'            => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
+			'values_export'         => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
+			'values_export_type'    => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
+			'zip_data'              => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
+			'tg_token'              => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
+			'tg_chat'               => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
 		]);
 
 		if (empty($settingsData['export_path'])) {
@@ -50,6 +51,10 @@ switch ($method) {
 				exit;
 			}
 		}
+
+        if (empty($settingsData['export_compatibility'])) {
+            $settingsData['export_compatibility'] = 'compatibility';
+        }
 
 		$settingsData['export_path'] = str_replace(ROOT_DIR, '', $exportPath);
 
