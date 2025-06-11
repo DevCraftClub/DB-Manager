@@ -291,10 +291,10 @@ class SqlExporter {
 				'sql' => "SELECT table_name, column_type 
 						  FROM information_schema.columns 
 						  WHERE table_schema = DATABASE() 
-						  AND column_name = ? 
+						  AND column_name = '{$columnName}'
 						  AND (column_type LIKE 'enum%' OR column_type LIKE 'set%')
 						  LIMIT 1",
-			], [$columnName]);
+			]);
 
 			if (!empty($existingColumns)) {
 				$columnType = $existingColumns[0]['column_type'];
