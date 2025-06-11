@@ -419,7 +419,6 @@ class SqlExporter {
 		$sql = self::fixCreateOrReplaceTable($sql);
 		$sql = self::fixSetEnumDefinitions($sql);
 		$sql = self::fixCreateOrReplaceIndex($sql);
-
 		$sql = self::fixCurrentTimestampSyntax($sql);
 
 		return self::fixCharsetCollation($sql);
