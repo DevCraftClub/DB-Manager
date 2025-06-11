@@ -45,12 +45,12 @@ $createStrings[] = __("-- База данных: ") . $dbName ;
 $createStrings[] = '--';
 
 $createDbSql = $mh_admin->load_data($dbName, [
-        'sql' => "SHOW CREATE DATABASE `" . $dbName . "`"
-    ])[0]['Create Database'] . ";";
+		'sql' => "SHOW CREATE DATABASE `" . $dbName . "`"
+	])[0]['Create Database'] . ";";
 if (SqlExporter::supportsCreateOrReplace()) {
-    $createStrings[] = str_replace('CREATE DATABASE', 'CREATE OR REPLACE DATABASE', $createDbSql);
+	$createStrings[] = str_replace('CREATE DATABASE', 'CREATE OR REPLACE DATABASE', $createDbSql);
 } else {
-    $createStrings[] = str_replace('CREATE DATABASE', 'CREATE DATABASE IF NOT EXISTS', $createDbSql);
+	$createStrings[] = str_replace('CREATE DATABASE', 'CREATE DATABASE IF NOT EXISTS', $createDbSql);
 }
 
 $createStrings[] = 'USE ' . $dbName . ';';
@@ -62,23 +62,26 @@ foreach ($parsedTables as $table) {
 	$createStrings[] = __("-- Таблица: ") . $table->getName() ;
 	$createStrings[] = '--';
 
-    $tableSql = $table->generateSql($settings['key_export'] === 'after');
-    $tableSql = SqlExporter::fixSqlCompatibility($tableSql);
+	$tableSql = $table->generateSql($settings['key_export'] === 'after');
+	$tableSql = SqlExporter::fixSqlCompatibility($tableSql);
 
-    $createStrings[] = $tableSql;
+	$createStrings[] = $tableSql;
 }
 
 if ($settings['key_export'] === 'down') {
 	foreach ($parsedTables as $table) {
-		if(count($table->getIndexes()) > 0) {
+		$indexes = [];
+		foreach ($table->getIndexes() as $index) {
+			$indexSql = $index->generateSql();
+			$indexSql = SqlExporter::fixSqlCompatibility($indexSql);
+			if (!empty($indexSql)) $indexes[] = $indexSql;
+		}
+
+		if(count($indexes) > 0) {
 			$createStrings[] = "--";
 			$createStrings[] = __("-- Ключи для таблицы: ") . $table->getName();
 			$createStrings[] = '--';
-		}
-		foreach ($table->getIndexes() as $index) {
-            $indexSql = $index->generateSql();
-            $indexSql = SqlExporter::fixSqlCompatibility($indexSql);
-            $createStrings[] = $indexSql;
+			$createStrings[] = implode(PHP_EOL, $indexes);
 		}
 	}
 	$createStrings[] = PHP_EOL;
@@ -86,13 +89,16 @@ if ($settings['key_export'] === 'down') {
 $createStrings[] = PHP_EOL;
 
 foreach ($parsedTables as $table) {
-	if (count($table->getValues()) > 0) {
+	$tableValues = $table->getSqlValues($settings['values_export_type'] === 'group');
+	if(!empty($tableValues) && '\n' !== $tableValues) {
 		$createStrings[] = "--";
 		$createStrings[] = __("-- Данные для таблицы: ") . $table->getName();
 		$createStrings[] = '--';
+		$createStrings[] = $tableValues . PHP_EOL;
 	}
-	$createStrings[] = $table->getSqlValues($settings['values_export_type'] === 'group') . PHP_EOL;
 }
+
+$createStrings[] = PHP_EOL;
 
 $createStrings = array_merge($createStrings, SqlExporter::generateFooter());
 
