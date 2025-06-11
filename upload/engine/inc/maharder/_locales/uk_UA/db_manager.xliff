@@ -23,7 +23,7 @@
         <target state="final">Зберегти</target>
       </trans-unit>
       <trans-unit id="6" approved="yes">
-        <source>Не заполненые поля!</source>
+        <source>Не заполненные поля!</source>
         <target state="final">Незаповнені поля!</target>
       </trans-unit>
       <trans-unit id="7" approved="yes">
