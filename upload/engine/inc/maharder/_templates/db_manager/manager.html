@@ -1,0 +1,196 @@
+{% extends 'base.html' %}
+
+{% from "_macros/checkbox.twig" import checkbox %}
+{% from "_macros/select.twig" import select %}
+{% from "_macros/input.twig" import input, number %}
+{% from "_macros/textarea.twig" import editor, text %}
+
+{% block content %}
+
+<form class="ui form segment">
+    <div class="ui bottom attached tab active" data-tab="main">
+        <h4 class="ui dividing header">{{ title }}</h4>
+        <div class="ui four column grid">
+            {% autoescape 'html' %}
+
+            <div class="two column row">
+                <div class="eight wide column rowDescr">
+                    <table class="ui very basic unstackable striped celled scrolling table" id="sqlTables">
+                        <thead>
+                        <tr>
+                            <th class="two wide">
+                                <div class="ui fitted slider checkbox">
+                                    <input type="checkbox" name="all_tables" checked> <label></label>
+                                </div>
+                            </th>
+                            <th>{% trans %}Название{% endtrans %}</th>
+                            <th class="four wide">{% trans %}Кол-во данных{% endtrans %}</th>
+                            <th class="three wide">{% trans %}Вес{% endtrans %}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for table in tables %}
+                        <tr>
+                            <td class="two wide">
+                                <div class="ui fitted slider checkbox">
+                                    <input type="checkbox" value="{{ table.getName }}" name="table[]" checked>
+                                    <label></label>
+                                </div>
+                            </td>
+                            <td>{{ table.getName }}</td>
+                            <td class="text-center four wide">{{ table.getEntries }}</td>
+                            <td class="three wide">{{ table.getFormattedSize }}</td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+
+                    </table>
+                </div>
+                <div class="eight wide column">
+
+                    <table class="ui very basic unstackable striped celled scrolling table" id="exportedTable">
+                        <thead>
+                        <tr>
+                            <th>{% trans %}Название{% endtrans %}</th>
+                            <th class="three wide">{% trans %}Тип{% endtrans %}</th>
+                            <th class="four wide">{% trans %}Действие{% endtrans %}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for name, info in exported %}
+                        <tr>
+                            <td has-popup data-content="{{ info.path }}">{{ info.name }}</td>
+                            <td class="three wide">{{ info.ext }}</td>
+                            <td class="four wide">
+                                <div class="ui icon buttons">
+                                    <div role="button" class="ui button" has-popup data-action="download" data-name="{{name}}"
+                                            data-content="{% trans %}Скачать{% endtrans %}">
+                                        <i class="fa-duotone fa-solid fa-download"></i>
+                                    </div>
+                                    <div role="button" class="ui red button" has-popup data-action="delete" data-name="{{name}}"
+                                            data-content="{% trans %}Удалить{% endtrans %}">
+                                        <i class="fa-duotone fa-solid fa-trash-can-xmark"></i>
+                                    </div>
+                                    <div role="button" class="ui blue button" has-popup data-action="import" data-name="{{name}}"
+                                            data-content="{% trans %}Восстановить{% endtrans %}">
+                                        <i class="fa-duotone fa-solid fa-upload"></i>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+
+                    </table>
+
+                </div>
+            </div>
+
+            {% endautoescape %}
+        </div>
+    </div>
+
+</form>
+<div class="ui segment">
+    <div class="ui button export" tabindex="0">
+        <i class="fa-duotone fa-solid fa-floppy-disk"></i> {%trans%}Экспортировать{%endtrans%}
+    </div>
+</div>
+{% endblock %}
+
+
+{% block scripts %}
+
+{% autoescape 'js' %}
+<script>
+
+	$(() => {
+		$('[has-popup]').popup({
+			hoverable: true
+		});
+		toggleCheckboxGroup('all_tables', 'table');
+
+		$('.export').on('click', function () {
+			sendPreparedAjaxRequest({
+				method   : 'export',
+				inputData: $('.form').serialize()
+			})
+		});
+
+		$('[data-action="import"]').on('click', function () {
+			sendPreparedAjaxRequest({
+				method   : 'import',
+				inputData: $.param({
+					file_name: $(this).data('name')
+				})
+			})
+		});
+
+		$('[data-action="delete"]').on('click', function () {
+			sendPreparedAjaxRequest({
+				method   : 'delete_file',
+				inputData: $.param({
+					file_name: $(this).data('name')
+				})
+			})
+		});
+
+		$('[data-action="download"]').on('click', function () {
+			// Получаем имя файла из data-атрибута
+			var fileName = $(this).data('name');
+
+			// Создаем форму с нужными параметрами, используя ваш endpoint
+			var form = $('<form>', {
+				method: 'POST',
+				action: 'engine/ajax/controller.php?mod=maharder'
+			});
+
+			// Добавляем необходимые поля – пример передачи user_hash, module, file, method и data
+			form.append($('<input>', {
+				type: 'hidden',
+				name: 'user_hash',
+				value: dle_login_hash
+			}));
+
+			form.append($('<input>', {
+				type: 'hidden',
+				name: 'module',
+				value: module_code
+			}));
+
+			form.append($('<input>', {
+				type: 'hidden',
+				name: 'file',
+				value: 'master'
+			}));
+
+			form.append($('<input>', {
+				type: 'hidden',
+				name: 'method',
+				value: 'download_file'
+			}));
+
+			// Если ожидается, что параметр data будет строкой с сериализованными данными,
+			// передадим его так:
+			form.append($('<input>', {
+				type: 'hidden',
+				name: 'data',
+				value: $.param({ file_name: fileName })
+			}));
+
+			// Чтобы форма не была видна, можно задать ей display:none
+			form.css('display', 'none');
+
+			// Добавляем форму в тело документа и отправляем её
+			$('body').append(form);
+			form.submit();
+
+			// После отправки можно удалить форму, если это нужно
+			form.remove();
+
+		});
+	})
+
+</script>
+{% endautoescape %}
+{% endblock %}
