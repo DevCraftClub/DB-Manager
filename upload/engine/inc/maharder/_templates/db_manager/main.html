@@ -9,21 +9,20 @@
 
 <div class="ui segment">
 	{{ include('templateIncludes/boxes.html', {
-	boxes: {
-	main: {
-	link: '#',
-	name: 'Основные настройки'|trans,
-	icon: 'home icon'
-	},
+            boxes: {
+                main: {
+                    link: '#',
+                    name: 'Основные настройки'|trans,
+                    icon: 'home icon'
+                },
 
-	telegram: {
-	link: '#',
-	name: 'Настройка бота'|trans,
-	icon: 'universal access icon'
-	},
-
-	}
-	})
+                telegram: {
+                    link: '#',
+                    name: 'Настройка бота'|trans,
+                    icon: 'universal access icon'
+                },
+            }
+        })
 	}}
 </div>
 
@@ -33,38 +32,75 @@
 		<div class="ui four column grid">
 			{% autoescape 'html' %}
 
-			{{ input('export_path', 'Путь до файлов бд'|trans, 'Укажите путь, где будут храниться файлы базы данных.<br><br><em><b>По умолчанию:</b> /engine/inc/maharder/_backup</em>'|trans, settings ) }}
+			{{ input(
+                'export_path',
+                'Путь до файлов бд'|trans,
+                'Укажите путь, где будут храниться файлы базы данных.<br><br><em><b>По умолчанию:</b>/engine/inc/maharder/_backup</em>'|trans,
+                settings
+			) }}
 
-			{{ checkbox('export_to_telegram', 'Включить экспорт в Telegram?'|trans, 'Если включено, то новый экспорт автоматически будет экспортирован в телеграм'|trans, settings) }}
+			{{ checkbox(
+			    'export_to_telegram',
+			    'Включить экспорт в Telegram?'|trans,
+			    'Если включено, то новый экспорт автоматически будет экспортирован в телеграм'|trans,
+			    settings
+			) }}
 
-			{{ select('export_compatibility', 'Совместимость вывода данных'|trans, 'Вы решаете сами, в каком формате сохранять данные. По умолчанию: Общая совместимость<br><br>Возможные варианты:<ul>'|trans ~
-			'<li><b>Общая совместимость</b>: Сохраняет данные так, что их можно импортировать и в MySQL и в MariaDB</li>'|trans ~
-			'<li><b>Текущая база данных</b>: Вычисляет какая база данных используется и генерирует для неё файл экспорта. Совместимость может страдать</li>'|trans ~
-			'</ul>', settings, {
-			'compatibility': 'Общая совместимость'|trans,
-			'current': 'Текущая база данных'|trans,
-			}) }}
+			{{ select(
+			    'export_compatibility',
+			    'Совместимость вывода данных'|trans,
+			    'Вы решаете сами, в каком формате сохранять данные. По умолчанию: Общая совместимость<br><br>Возможные варианты:<ul>'|trans ~
+				'<li><b>Общая совместимость</b>: Сохраняет данные так, что их можно импортировать и в MySQL и в MariaDB</li>'|trans ~
+				'<li><b>Текущая база данных</b>: Вычисляет какая база данных используется и генерирует для неё файл экспорта. Совместимость может страдать</li>'|trans ~
+				'</ul>',
+			    settings,
+			    {
+                    'compatibility': 'Общая совместимость'|trans,
+                    'current': 'Текущая база данных'|trans,
+			    }
+			) }}
 
-			{{ select('key_export', 'Вывод ключей'|trans, 'Куда выводить ключи (UNIQUE, ForeignKey, ...) при генерации скрипта?<br><br><em><b>По умолчанию:</b> в самый низ, после таблиц</em>'|trans, settings, {
-			'down': 'В самый низ, после всех таблиц (рекомендуется)'|trans,
-			'after': 'После самой таблицы'|trans,
-			}) }}
+			{{ select(
+			    'key_export',
+			    'Вывод ключей'|trans,
+			    'Куда выводить ключи (UNIQUE, ForeignKey, ...) при генерации скрипта?<br><br><em><b>По умолчанию:</b> в самый низ, после таблиц</em>'|trans,
+			    settings,
+			    {
+                    'down': 'В самый низ, после всех таблиц (рекомендуется)'|trans,
+                    'after': 'После самой таблицы'|trans,
+			    }
+			) }}
 
-			{{ select('values_export', 'Вывод данных'|trans, 'Куда выводить данные таблиц при генерации скрипта?<br><br><em><b>По умолчанию:</b> в самый низ, после таблиц</em>'|trans, settings, {
-			'down': 'В самый низ, после всех таблиц (рекомендуется)'|trans,
-			'after': 'После самой таблицы'|trans,
-			}) }}
+			{{ select(
+                'values_export',
+                'Вывод данных'|trans,
+                'Куда выводить данные таблиц при генерации скрипта?<br><br><em><b>По умолчанию:</b> в самый низ, после таблиц</em>'|trans,
+                settings, {
+                    'down': 'В самый низ, после всех таблиц (рекомендуется)'|trans,
+                    'after': 'После самой таблицы'|trans,
+                }
+			) }}
 
-			{{ select('values_export_type', 'Генерация данных'|trans, 'Как выводить данные таблиц при генерации скрипта?<br><br><em><b>По умолчанию:</b> В группе</em>'|trans, settings, {
-			'group': 'В группе (рекомендуется)'|trans,
-			'single': 'Каждый по отдельности'|trans,
-			}) }}
+			{{ select(
+                'values_export_type',
+                'Генерация данных'|trans,
+                'Как выводить данные таблиц при генерации скрипта?<br><br><em><b>По умолчанию:</b> В группе</em>'|trans,
+                settings, {
+                    'group': 'В группе (рекомендуется)'|trans,
+                    'single': 'Каждый по отдельности'|trans,
+                }
+			) }}
 
-			{{ select('zip_data', 'Архивировать данные?'|trans, 'Если включено, то данные будут архивированы в выбранном формате<br><br><em><b>По умолчанию:</b> без архивации</em>'|trans, settings, {
-			'raw': 'Без архивации'|trans,
-			'zip': 'Архивировать как ZIP архив'|trans,
-			'bzip2': 'Архивировать как BZip2 архив'|trans,
-			}) }}
+			{{ select(
+                'zip_data',
+                'Архивировать данные?'|trans,
+                'Если включено, то данные будут архивированы в выбранном формате<br><br><em><b>По умолчанию:</b> без архивации</em>'|trans,
+                settings, {
+                    'raw': 'Без архивации'|trans,
+                    'zip': 'Архивировать как ZIP архив'|trans,
+                    'bzip2': 'Архивировать как BZip2 архив'|trans,
+                }
+			) }}
 
 			{% endautoescape %}
 		</div>
@@ -74,15 +110,25 @@
 		<div class="ui four column grid">
 			{% autoescape 'html' %}
 
-			{{ input('tg_token', 'Укажите токен вашего бота'|trans, 'Не давайте доступа к настройкам никому. Как узнать токен бота - можно узнать <a href="https://readme.devcraft.club/latest/dev/telegramposting/bot/#_2" target="_blank">тут</a>.'|trans, settings) }}
+			{{ input(
+                'tg_token',
+                'Укажите токен вашего бота'|trans,
+                'Не давайте доступа к настройкам никому. Как узнать токен бота - можно узнать <a href="https://readme.devcraft.club/latest/dev/telegramposting/bot/#_2" target="_blank">тут</a>.'|trans,
+                settings
+			) }}
 
-			{{ input('tg_chat', 'Укажите ID канала'|trans, 'Не давайте доступа к настройкам никому. Как узнать ID чата - можно узнать <a href="https://readme.devcraft.club/latest/dev/telegramposting/bot/#id/" target="_blank">тут</a>.'|trans, settings) }}
+			{{ input(
+                'tg_chat',
+                'Укажите ID канала'|trans,
+                'Не давайте доступа к настройкам никому. Как узнать ID чата - можно узнать <a href="https://readme.devcraft.club/latest/dev/telegramposting/bot/#id/" target="_blank">тут</a>.'|trans,
+                settings
+			) }}
 
 			{{ include('templateIncludes/segRow.html', {
-			id: 'send_message',
-			name: 'Отправить сообщение в группу/канал'|trans,
-			descr: "Для проверки функционала или для оповещения, которое никак не связанно с новостью"|trans,
-			html: '<div class="ui button send_tg_msg">Отправить сообщение</div>'|trans
+                id: 'send_message',
+                name: 'Отправить сообщение в группу/канал'|trans,
+                descr: "Для проверки функционала или для оповещения, которое никак не связанно с новостью"|trans,
+                html: '<div class="ui button send_tg_msg">Отправить сообщение</div>'|trans
 			})
 			}}
 
@@ -100,82 +146,82 @@
 
 {% autoescape 'js' %}
 <script>
-	$(() => {
-		$(document).on('click', '.save', function () {
-			sendAjaxRequest({
-				url: 'engine/ajax/controller.php?mod=maharder',
-				data: {
-					user_hash: '{{dle_login_hash}}',
-					module: '{{module_code}}',
-					file: 'master',
-					method: 'settings',
-					data: $('.form').serialize()
-				},
-			});
-		});
-	});
+  $(() => {
+    $(document).on('click', '.save', function () {
+      sendAjaxRequest({
+        url: 'engine/ajax/controller.php?mod=maharder',
+        data: {
+          user_hash: '{{dle_login_hash}}',
+          module: '{{module_code}}',
+          file: 'master',
+          method: 'settings',
+          data: $('.form').serialize(),
+        },
+      });
+    });
+  });
 
-	$(document).on('click', '.send_tg_msg', function () {
-		let
-			$token = $('#tg_token'),
-			$chat = $('#tg_chat')
-		;
-		if ($token.val() === '' || $chat.val() === '') {
-			$.alert({
-				useBootstrap: false,
-				title: __('Не заполненные поля!'),
-				content: __('Поля с токеном и ID чата должны быть заполнены!')
-			});
-		} else {
-			startLoading();
-			sendAjaxRequest({
-				url: 'engine/ajax/controller.php?mod=maharder',
-				data: {
-					user_hash: '{{ dle_login_hash }}',
-					module: '{{ module_code }}',
-					file: 'master',
-					method: 'send_message',
-					data: {
-						bot: $token.val(),
-						chat: $chat.val()
-					}
-				},
-				type: 'POST',
-				successCallback: function (data) {
+  $(document).on('click', '.send_tg_msg', function () {
+    let
+      $token = $('#tg_token'),
+      $chat = $('#tg_chat')
+    ;
+    if ($token.val() === '' || $chat.val() === '') {
+      $.alert({
+        useBootstrap: false,
+        title: __('Не заполненные поля!'),
+        content: __('Поля с токеном и ID чата должны быть заполнены!'),
+      });
+    } else {
+      startLoading();
+      sendAjaxRequest({
+        url: 'engine/ajax/controller.php?mod=maharder',
+        data: {
+          user_hash: '{{ dle_login_hash }}',
+          module: '{{ module_code }}',
+          file: 'master',
+          method: 'send_message',
+          data: {
+            bot: $token.val(),
+            chat: $chat.val(),
+          },
+        },
+        type: 'POST',
+        successCallback: function (data) {
 
-					let meta = JSON.parse(data.meta)
-					if (meta.ok) {
-						$('body')
-							.toast({
-								title: __('Сообщение отправлено!'),
-								message: __(`<b>Тестовое сообщение</b> было отправлено в чат :title: [<a href="https://t.me/:username:" target="_blank">@:username:</a>].`, {
-									':title:': meta.result.chat.title,
-									':username:': meta.result.chat.username,
-								}),
-								showProgress: 'bottom',
-								classProgress: 'red',
-								displayTime: 'auto',
-								class: 'success',
-							})
-						;
-					} else {
-						$('body')
-							.toast({
-								title: __('Сообщение не было отправлено!'),
-								message: __('<b>Тестовое сообщение</b> было не могло быть отправлено при текущих настройках!<br>Проверьте данные и попробуйте снова!<br><br><i>Описание ошибки можно увидеть в консоли браузера!</i>'),
-								showProgress: 'bottom',
-								classProgress: 'blue',
-								displayTime: 'auto',
-								class: 'error',
-							})
-						;
-						console.log(data);
-					}
+          let meta = JSON.parse(data.meta);
+          if (meta.ok) {
+            $('body')
+              .toast({
+                title: __('Сообщение отправлено!'),
+                message: __(`<b>Тестовое сообщение</b> было отправлено в чат :title: [<a href="https://t.me/:username:" target="_blank">@:username:</a>].`, {
+                  ':title:': meta.result.chat.title,
+                  ':username:': meta.result.chat.username,
+                }),
+                showProgress: 'bottom',
+                classProgress: 'red',
+                displayTime: 'auto',
+                class: 'success',
+              })
+            ;
+          } else {
+            $('body')
+              .toast({
+                title: __('Сообщение не было отправлено!'),
+                message: __('<b>Тестовое сообщение</b> было не могло быть отправлено при текущих настройках!<br>Проверьте данные и попробуйте снова!<br><br><i>Описание ошибки можно увидеть в консоли браузера!</i>'),
+                showProgress: 'bottom',
+                classProgress: 'blue',
+                displayTime: 'auto',
+                class: 'error',
+              })
+            ;
+            console.log(data);
+          }
 
-				}
-			});
-		}
-	});
+        },
+      });
+    }
+  });
 </script>
 {% endautoescape %}
 {% endblock %}
