@@ -238,7 +238,7 @@ class TableColumn {
 		};
 		if (!preg_match('/^[\'"].*[\'"]$/', $newDefault) &&
 		    !in_array(strtoupper($newDefault), ['NULL', 'CURRENT_TIMESTAMP', 'NOW()']) &&
-		    !is_numeric($newDefault)) {
+		    !is_numeric($newDefault) && !empty($newDefault)) {
 			$newDefault = "'{$newDefault}'";
 		}
 		$this->default = $newDefault;
