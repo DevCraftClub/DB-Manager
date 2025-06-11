@@ -15,12 +15,12 @@ class SqlExporter {
 	/**
 	 * @var string|null Тип используемой базы данных (mysql или mariadb)
 	 */
-	private static $dbType;
+	private static ?string $dbType;
 
 	/**
 	 * @var string|null Версия базы данных
 	 */
-	private static $dbVersion;
+	private static ?string $dbVersion;
 
 	/**
 	 * @var MhAjax|null Экземпляр класса для выполнения AJAX-запросов
@@ -56,8 +56,9 @@ class SqlExporter {
 	/**
 	 * Определяет тип используемой базы данных (MySQL или MariaDB).
 	 *
-	 * @throws Exception При ошибке выполнения запроса
 	 * @return string Тип базы данных ('mysql' или 'mariadb')
+	 * @throws \Throwable
+	 * @throws Exception При ошибке выполнения запроса
 	 */
 	public static function detectDatabaseType(): string {
 		if (is_null(self::$mhAjax)) {
@@ -90,8 +91,7 @@ class SqlExporter {
 
 				self::$dbVersion = $version;
 				if (self::$config['export_compatibility'] === 'current') {
-					if (stripos($version, 'mariadb') !== FALSE
-					    || stripos($comment, 'mariadb') !== FALSE) {
+					if (stripos($version, 'mariadb') !== FALSE || stripos($comment, 'mariadb') !== FALSE) {
 						self::$dbType = 'mariadb';
 					} else {
 						self::$dbType = 'mysql';
@@ -113,6 +113,8 @@ class SqlExporter {
 	 * Возвращает версию базы данных.
 	 *
 	 * @return string Версия базы данных
+	 * @throws \Exception
+	 * @throws \Throwable
 	 */
 	public static function getDatabaseVersion(): string {
 		if (self::$dbVersion === NULL) {
@@ -126,6 +128,7 @@ class SqlExporter {
 	 * Проверяет поддержку конструкции CREATE OR REPLACE.
 	 *
 	 * @return bool TRUE если поддерживается, FALSE в противном случае
+	 * @throws \Throwable
 	 */
 	public static function supportsCreateOrReplace(): bool {
 		$dbType  = self::detectDatabaseType();
@@ -142,22 +145,26 @@ class SqlExporter {
 	 * Проверяет поддержку конструкции DROP INDEX IF EXISTS.
 	 *
 	 * @return bool TRUE если поддерживается, FALSE в противном случае
+	 * @throws \Exception
+	 * @throws \Throwable
 	 */
 	public static function supportsDropIndexIfExists(): bool {
-		$dbType  = self::detectDatabaseType();
+		$dbType = self::detectDatabaseType();
 		$version = self::getDatabaseVersion();
 
 		if ($dbType === 'mariadb') {
 			return version_compare($version, '10.1.4', '>=');
-		} else {
-			return version_compare($version, '5.7.0', '>=');
 		}
+
+		return false;
 	}
 
 	/**
 	 * Генерирует SQL-заголовки с учетом совместимости.
 	 *
 	 * @return array Массив SQL-заголовков
+	 * @throws \Exception
+	 * @throws \Throwable
 	 */
 	public static function generateCompatibleHeaders(): array {
 		$dbType = self::detectDatabaseType();
@@ -200,6 +207,7 @@ class SqlExporter {
 	 * Генерирует SQL-футер для восстановления первоначальных настроек.
 	 *
 	 * @return array Массив SQL-команд футера
+	 * @throws \Throwable
 	 */
 	public static function generateFooter(): array {
 		$footer = [];
@@ -227,10 +235,13 @@ class SqlExporter {
 	}
 
 	/**
-	 * Исправляет синтаксис CREATE OR REPLACE TABLE для обеспечения совместимости.
+	 * Исправляет синтаксис CREATE OR REPLACE TABLE для обеспечения
+	 * совместимости.
 	 *
-	 * @param string $sql SQL-запрос
+	 * @param   string  $sql  SQL-запрос
+	 *
 	 * @return string Исправленный SQL-запрос
+	 * @throws \Throwable
 	 */
 	public static function fixCreateOrReplaceTable(string $sql): string {
 		if (!self::supportsCreateOrReplace()) {
@@ -238,9 +249,7 @@ class SqlExporter {
 			if (preg_match($pattern, $sql, $matches)) {
 				$tableName  = $matches[1];
 
-				return preg_replace($pattern,
-					"CREATE TABLE $tableName",
-					$sql);
+				return preg_replace($pattern, "CREATE TABLE $tableName", $sql);
 			}
 		}
 
@@ -254,9 +263,9 @@ class SqlExporter {
 	 * @return string Исправленный SQL-запрос
 	 */
 	public static function fixSetEnumDefinitions(string $sql): string {
-		$sql = preg_replace_callback(
+		return preg_replace_callback(
 			'/`(\w+)`\s+(set|enum)\((\d+)\)/i',
-			function($matches) {
+			static function($matches) {
 				$columnName = $matches[1];
 				$type       = strtoupper($matches[2]);
 				$number     = (int) $matches[3];
@@ -269,8 +278,6 @@ class SqlExporter {
 			},
 			$sql,
 		);
-
-		return $sql;
 	}
 
 	/**
@@ -281,19 +288,10 @@ class SqlExporter {
 	 * @param int $maxCount Максимальное количество значений
 	 * @return array Массив значений
 	 */
-	private static function generateValuesForColumn(
-		string $columnName,
-		string $type,
-		int $maxCount,
-	): array {
+	private static function generateValuesForColumn(string $columnName, string $type, int $maxCount): array {
 		try {
 			$existingColumns = self::$mhAjax->load_data('existing_columns', [
-				'sql' => "SELECT table_name, column_type 
-						  FROM information_schema.columns 
-						  WHERE table_schema = DATABASE() 
-						  AND column_name = '{$columnName}'
-						  AND (column_type LIKE 'enum%' OR column_type LIKE 'set%')
-						  LIMIT 1",
+				'sql' => "SELECT table_name, column_type FROM information_schema.columns WHERE table_schema = DATABASE() AND column_name = '{$columnName}' AND (column_type LIKE 'enum%' OR column_type LIKE 'set%') LIMIT 1",
 			]);
 
 			if (!empty($existingColumns)) {
@@ -315,12 +313,8 @@ class SqlExporter {
 			}
 
 			$tablesWithColumn = self::$mhAjax->load_data('tables_with_column', [
-				'sql' => "SELECT table_name 
-						  FROM information_schema.columns 
-						  WHERE table_schema = DATABASE() 
-						  AND column_name = ?
-						  LIMIT 5",
-			], [$columnName]);
+				'sql' => "SELECT table_name FROM information_schema.columns WHERE table_schema = DATABASE() AND column_name = '{$columnName}' LIMIT 5",
+			]);
 
 			$allValues = [];
 			foreach ($tablesWithColumn as $tableRow) {
@@ -329,12 +323,8 @@ class SqlExporter {
 				try {
 					$distinctValues
 						= self::$mhAjax->load_data('distinct_values', [
-						'sql' => "SELECT DISTINCT `{$columnName}` as value 
-								  FROM `{$tableName}` 
-								  WHERE `{$columnName}` IS NOT NULL 
-								  AND `{$columnName}` != '' 
-								  LIMIT ?",
-					], [$maxCount]);
+						'sql' => "SELECT DISTINCT `{$columnName}` as value FROM `{$tableName}` WHERE `{$columnName}` IS NOT NULL AND `{$columnName}` != '' LIMIT $maxCount",
+					]);
 
 					foreach ($distinctValues as $row) {
 						$value = trim($row['value']);
@@ -343,15 +333,12 @@ class SqlExporter {
 							$setValues = array_map('trim',
 								explode(',', $value));
 							foreach ($setValues as $setValue) {
-								if (!empty($setValue)
-								    && !in_array("'{$setValue}'", $allValues)) {
+								if (!empty($setValue) && !in_array("'{$setValue}'", $allValues)) {
 									$allValues[] = "'{$setValue}'";
 								}
 							}
 						} else {
-							if (!empty($value)
-							    && !in_array("'{$value}'",
-									$allValues)) {
+							if (!empty($value) && !in_array("'{$value}'", $allValues)) {
 								$allValues[] = "'{$value}'";
 							}
 						}
@@ -385,41 +372,85 @@ class SqlExporter {
 	/**
 	 * Исправляет синтаксис CREATE OR REPLACE INDEX.
 	 *
-	 * @param string $sql SQL-запрос
+	 * @param   string  $sql  SQL-запрос
+	 *
 	 * @return string Исправленный SQL-запрос
+	 * @throws \Exception|\Throwable
 	 */
 	public static function fixCreateOrReplaceIndex(string $sql): string {
-		$pattern
-			= '/CREATE\s+OR\s+REPLACE\s+INDEX\s+(`?\w+`?)\s+ON\s+(`?\w+`?)\s*\(([^)]+)\)/i';
+		$pattern = '/CREATE\s+OR\s+REPLACE\s+INDEX\s+(`?\w+`?)\s+ON\s+(`?\w+`?)\s*\(([^)]+)\)/i';
 
 		if (preg_match($pattern, $sql, $matches)) {
-			$indexName = $matches[1];
-			$tableName = $matches[2];
-			$columns   = $matches[3];
+			list($_, $indexName, $tableName, $columns) = $matches;
 
 			if (self::supportsDropIndexIfExists()) {
 				return "DROP INDEX IF EXISTS {$indexName} ON {$tableName};\nCREATE INDEX {$indexName} ON {$tableName} ({$columns});";
-			} else {
-				return __("-- Проверка на существование индекса") . PHP_EOL .
-				       "/*!50700 DROP INDEX IF EXISTS {$indexName} ON {$tableName} */;" . PHP_EOL.
-				       "CREATE INDEX {$indexName} ON {$tableName} ({$columns});";
 			}
+
+			return __("-- Проверка на существование индекса") . PHP_EOL .
+			       self::generateDropIndexProcedure($indexName, $tableName) . PHP_EOL.
+			       "CREATE INDEX {$indexName} ON {$tableName} ({$columns});";
 		}
 
 		return $sql;
 	}
 
 	/**
+	 * Генерирует SQL-процедуру для безопасного удаления индекса из таблицы
+	 * MySQL
+	 *
+	 * Создает альтернативу команде DROP INDEX IF EXISTS (которая доступна в
+	 * MariaDB) для MySQL. Процедура сначала проверяет существование индекса в
+	 * таблице через information_schema.statistics, а затем выполняет удаление
+	 * только если индекс действительно существует.
+	 *
+	 * Метод очищает имена индекса и таблицы от обратных кавычек для
+	 * безопасного
+	 * использования в SQL-запросах к information_schema, но сохраняет
+	 * оригинальные имена с кавычками в итоговой команде DROP INDEX.
+	 *
+	 * @param   string  $indexName  Имя индекса для удаления (может содержать
+	 *                              обратные кавычки)
+	 * @param   string  $tableName  Имя таблицы, из которой нужно удалить
+	 *                              индекс (может содержать обратные кавычки)
+	 *
+	 * @return string Готовая к выполнению SQL-процедура для безопасного
+	 *                удаления индекса
+	 *
+	 * @throws \Throwable
+	 * @internal Метод предназначен для внутреннего использования в системе
+	 *           миграций
+	 *
+	 */
+	private static function generateDropIndexProcedure(string $indexName, string $tableName): string {
+		$cleanIndexName = str_replace('`', '', $indexName);
+		$cleanTableName = str_replace('`', '', $tableName);
+
+		return __("-- Альтернатива DROP INDEX IF EXISTS для MySQL как у MariaDB для проверки и удаления индекса") . PHP_EOL .
+		       "SET @index_exists = (" . PHP_EOL  .
+		       "    SELECT COUNT(*) FROM information_schema.statistics " . PHP_EOL  .
+		       "    WHERE table_schema = DATABASE() " . PHP_EOL  .
+		       "    AND table_name = '{$cleanTableName}' " . PHP_EOL  .
+		       "    AND index_name = '{$cleanIndexName}'" . PHP_EOL  .
+		       ");" . PHP_EOL  .
+		       "SET @sql = IF(@index_exists > 0, 'DROP INDEX {$indexName} ON {$tableName}', 'SELECT \"Index {$cleanIndexName} does not exist\" as notice');" . PHP_EOL  .
+		       "PREPARE stmt FROM @sql;" . PHP_EOL  .
+		       "EXECUTE stmt;" . PHP_EOL  .
+		       "DEALLOCATE PREPARE stmt;";
+	}
+
+	/**
 	 * Применяет все исправления совместимости к SQL-запросу.
 	 *
-	 * @param string $sql Исходный SQL-запрос
+	 * @param   string  $sql  Исходный SQL-запрос
+	 *
 	 * @return string Исправленный SQL-запрос
+	 * @throws \Throwable
 	 */
 	public static function fixSqlCompatibility(string $sql): string {
 		$sql = self::fixCreateOrReplaceTable($sql);
 		$sql = self::fixSetEnumDefinitions($sql);
 		$sql = self::fixCreateOrReplaceIndex($sql);
-
 		$sql = self::fixCurrentTimestampSyntax($sql);
 
 		return self::fixCharsetCollation($sql);
@@ -525,7 +556,7 @@ class SqlExporter {
 		// Если количество отсортированных таблиц меньше исходного,
 		// значит, в зависимостях обнаружен цикл.
 		if (count($sorted) !== count($tables)) {
-			throw new Exception('Циклическая зависимость обнаружена между таблицами.');
+			throw new \RuntimeException('Циклическая зависимость обнаружена между таблицами.');
 		}
 
 		return $sorted;

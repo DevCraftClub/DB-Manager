@@ -229,13 +229,19 @@ class TableColumn {
 	 * @return TableColumn Возвращает текущий экземпляр столбца таблицы для обеспечения цепного вызова методов.
 	 */
 	public function setDefault(mixed $default = null): TableColumn {
-		$this->default = match ($default) {
+		$newDefault = match ($default) {
 			'int', 'bigint', 'mediumint', 'smallint' => (int)$default,
 			'float', 'double'                        => (float)$default,
 			'bool', 'tinyint'                        => (bool)$default,
 			"''", '""'                               => '',
 			default                                  => $default
 		};
+		if (!preg_match('/^[\'"].*[\'"]$/', $newDefault) &&
+		    !in_array(strtoupper($newDefault), ['NULL', 'CURRENT_TIMESTAMP', 'NOW()']) &&
+		    !is_numeric($newDefault) && !empty($newDefault)) {
+			$newDefault = "'{$newDefault}'";
+		}
+		$this->default = $newDefault;
 		return $this;
 	}
 
