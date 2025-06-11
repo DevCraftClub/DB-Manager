@@ -23,7 +23,7 @@
         <target state="final">Speichern</target>
       </trans-unit>
       <trans-unit id="6" approved="yes">
-        <source>Не заполненые поля!</source>
+        <source>Не заполненные поля!</source>
         <target state="final">Unvollständige Felder!</target>
       </trans-unit>
       <trans-unit id="7" approved="yes">

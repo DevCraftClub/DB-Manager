@@ -23,7 +23,7 @@
         <target state="translated">Save</target>
       </trans-unit>
       <trans-unit id="6">
-        <source>Не заполненые поля!</source>
+        <source>Не заполненные поля!</source>
         <target state="translated">Incomplete fields!</target>
       </trans-unit>
       <trans-unit id="7">
