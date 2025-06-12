@@ -2,193 +2,369 @@
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
   <file original="db_manager.ru_RU" datatype="plaintext" source-language="ru" target-language="uk">
     <body>
-      <trans-unit id="1" approved="yes">
+      <trans-unit id="91f2e0f5160f682dcfed7afad884d177" approved="yes">
         <source>Работа с базой данных, для правильного экспорта и импорта данных</source>
         <target state="final">Робота з базою даних, для правильного експорту та імпорту даних</target>
       </trans-unit>
-      <trans-unit id="2" approved="yes">
+      <trans-unit id="39d7a4bd8655f0a60bb1cbbfebb6ba39" approved="yes">
         <source>Управление базой данных</source>
         <target state="final">Управління базою даних</target>
       </trans-unit>
-      <trans-unit id="3" approved="yes">
+      <trans-unit id="c919d65bd95698af8f15fa8133bf490d" approved="yes">
         <source>Настройки</source>
-        <target state="final">Змінити</target>
+        <target state="final">Налаштування</target>
       </trans-unit>
-      <trans-unit id="4" approved="yes">
+      <trans-unit id="96e16ea5479e9986ff914a4a037dea2e" approved="yes">
         <source>Настройки бота</source>
         <target state="final">Налаштування бота</target>
       </trans-unit>
-      <trans-unit id="5" approved="yes">
+      <trans-unit id="74ea58b6a801f0dce4e5d34dbca034dc" approved="yes">
         <source>Сохранить</source>
         <target state="final">Зберегти</target>
       </trans-unit>
-      <trans-unit id="6" approved="yes">
+      <trans-unit id="af7098fc690aa19b54bb3df4e43616aa" approved="yes">
         <source>Не заполненные поля!</source>
-        <target state="final">Незаповнені поля!</target>
+        <target state="final">Не заповнені поля!</target>
       </trans-unit>
-      <trans-unit id="7" approved="yes">
+      <trans-unit id="3c9c6e3d82de40a3c0eaa5eba292fc9a" approved="yes">
         <source>Поля с токеном и ID чата должны быть заполнены!</source>
         <target state="final">Поля з токеном та ID чату повинні бути заповнені!</target>
       </trans-unit>
-      <trans-unit id="8" approved="yes">
+      <trans-unit id="cbc839893168a39f02bfe8f0d6c6ee1a" approved="yes">
         <source>Сообщение отправлено!</source>
         <target state="final">Повідомлення відправлено!</target>
       </trans-unit>
-      <trans-unit id="9" approved="yes">
-        <source>&lt;b&gt;Тестовое сообщение&lt;/b&gt; было отправлено в чат :title: [&lt;a href=&quot;https://t.me/:username:&quot; target=&quot;_blank&quot;&gt;@:username:&lt;/a&gt;].</source>
+      <trans-unit id="000e0bef6e571017f17c5e0c0dfe3f8c" approved="yes">
+        <source>&lt;b&gt;Тестовое сообщение&lt;/b&gt; было отправлено в чат :title: [&lt;a href="https://t.me/:username:" target="_blank"&gt;@:username:&lt;/a&gt;].</source>
         <target state="final">&lt;b&gt;Тестове повідомлення&lt;/b&gt; було відправлено в чат :title: [&lt;a href="https://t.me/:username:" target="_blank"&gt;@:username:&lt;/a&gt;].</target>
       </trans-unit>
-      <trans-unit id="10" approved="yes">
+      <trans-unit id="32519bd85e476f93f68b9eb6d0d7308b" approved="yes">
         <source>Сообщение не было отправлено!</source>
         <target state="final">Повідомлення не було відправлено!</target>
       </trans-unit>
-      <trans-unit id="11" approved="yes">
+      <trans-unit id="6dede3779258d0213a04b309134e74f9" approved="yes">
         <source>&lt;b&gt;Тестовое сообщение&lt;/b&gt; было не могло быть отправлено при текущих настройках!&lt;br&gt;Проверьте данные и попробуйте снова!&lt;br&gt;&lt;br&gt;&lt;i&gt;Описание ошибки можно увидеть в консоли браузера!&lt;/i&gt;</source>
         <target state="final">&lt;b&gt;Тестове повідомлення&lt;/b&gt; не могло бути відправлено при поточних налаштуваннях!&lt;br&gt;Перевірте дані та спробуйте ще раз!&lt;br&gt;&lt;br&gt;&lt;i&gt;Опис помилки можна побачити в консолі браузера!&lt;/i&gt;</target>
       </trans-unit>
-      <trans-unit id="12" approved="yes">
+      <trans-unit id="602680ed8916dcc039882172ef089256" approved="yes">
         <source>Название</source>
         <target state="final">Назва</target>
       </trans-unit>
-      <trans-unit id="13" approved="yes">
+      <trans-unit id="07ef3a7672dd5cab9ac5e384b27b418e" approved="yes">
         <source>Кол-во данных</source>
         <target state="final">Кількість даних</target>
       </trans-unit>
-      <trans-unit id="14" approved="yes">
+      <trans-unit id="a3890f22405acc4a0e742522dc295c63" approved="yes">
         <source>Вес</source>
         <target state="final">Вага</target>
       </trans-unit>
-      <trans-unit id="15" approved="yes">
+      <trans-unit id="345805b88b9ca1e189fa11ea817e5666" approved="yes">
         <source>Тип</source>
         <target state="final">Тип</target>
       </trans-unit>
-      <trans-unit id="16" approved="yes">
+      <trans-unit id="50a761a11275b70272b97775ec641e61" approved="yes">
         <source>Действие</source>
         <target state="final">Дія</target>
       </trans-unit>
-      <trans-unit id="17" approved="yes">
+      <trans-unit id="5dad7b0a025be1b1dd97ed9bae68e48b" approved="yes">
         <source>Скачать</source>
         <target state="final">Завантажити</target>
       </trans-unit>
-      <trans-unit id="18" approved="yes">
+      <trans-unit id="ed2bbfbc53d83d3ad81f7fd6485ac6e8" approved="yes">
         <source>Удалить</source>
         <target state="final">Видалити</target>
       </trans-unit>
-      <trans-unit id="19" approved="yes">
+      <trans-unit id="f5682b32f5eeeedb42e565cc6728a10d" approved="yes">
         <source>Восстановить</source>
         <target state="final">Відновити</target>
       </trans-unit>
-      <trans-unit id="20" approved="yes">
+      <trans-unit id="9f61a3b8c84128bd2afef7794c03b8cd" approved="yes">
         <source>Экспортировать</source>
         <target state="final">Експортувати</target>
       </trans-unit>
-      <trans-unit id="21" approved="yes">
+      <trans-unit id="b475317d4d28461ae61ccf975b1c98f2" approved="yes">
         <source>Настройки модуля</source>
         <target state="final">Налаштування модуля</target>
       </trans-unit>
-      <trans-unit id="22" approved="yes">
+      <trans-unit id="1afbfb509050909fea9ac2ba73ac2366" approved="yes">
         <source>Основной релиз</source>
         <target state="final">Основний реліз</target>
       </trans-unit>
-      <trans-unit id="23" approved="yes">
+      <trans-unit id="593c9576a2a5b74de0d875b0af564132" approved="yes">
         <source>Журнал изменений</source>
         <target state="final">Журнал змін</target>
       </trans-unit>
-      <trans-unit id="24" approved="yes">
+      <trans-unit id="979b751516d7d8ff67ec05a6042ebb46" approved="yes">
         <source>Включена опция экспорта в телеграм, но токен телеграм бота не заполнен!</source>
         <target state="final">Увімкнено опцію експорту в телеграм, але токен телеграм бота не заповнений!</target>
       </trans-unit>
-      <trans-unit id="25" approved="yes">
+      <trans-unit id="c4714f8478feeb3c3e33172b8a457d42" approved="yes">
         <source>Включена опция экспорта в телеграм, но ID канала/группы не заполнен!</source>
         <target state="final">Увімкнено опцію експорту в телеграм, але ID каналу/групи не заповнений!</target>
       </trans-unit>
-      <trans-unit id="26" approved="yes">
+      <trans-unit id="22d8ff492a13fa906407341fb129ccfc" approved="yes">
         <source>Настройки сохранены</source>
-        <target state="final">Налаштування збережені</target>
+        <target state="final">Налаштування збережено</target>
       </trans-unit>
-      <trans-unit id="27" approved="yes">
+      <trans-unit id="772955e11e5b8db6143ac37ce94e4290" approved="yes">
         <source>Сообщение отправлено</source>
         <target state="final">Повідомлення відправлено</target>
       </trans-unit>
-      <trans-unit id="28" approved="yes">
+      <trans-unit id="0b28c35ead3a96b0c504b5f638c87aec" approved="yes">
         <source>Удаление прошло успешно</source>
         <target state="final">Видалення пройшло успішно</target>
       </trans-unit>
-      <trans-unit id="29" approved="yes">
+      <trans-unit id="925e0a0388ada98ce26a045fcf537317" approved="yes">
         <source>Файл не найден</source>
         <target state="final">Файл не знайдено</target>
       </trans-unit>
-      <trans-unit id="30" approved="yes">
+      <trans-unit id="d5f953599096380a6a44abc9a34cae3e" approved="yes">
         <source>Не удалось открыть архив</source>
         <target state="final">Не вдалося відкрити архів</target>
       </trans-unit>
-      <trans-unit id="31" approved="yes">
+      <trans-unit id="e0f4d0517db3baefa93b9a2d6c74b4dd" approved="yes">
         <source>Не удалось открыть архив bzip2</source>
         <target state="final">Не вдалося відкрити архів bzip2</target>
       </trans-unit>
-      <trans-unit id="32" approved="yes">
+      <trans-unit id="1fb320cefd5243a047269c3b5f18043a" approved="yes">
         <source>Не удалось создать файл для распаковки</source>
         <target state="final">Не вдалося створити файл для розпакування</target>
       </trans-unit>
-      <trans-unit id="33" approved="yes">
+      <trans-unit id="00fde9b82cf1bf45ca517c1f65f51f33" approved="yes">
         <source>Ошибка чтения из архива bzip2</source>
         <target state="final">Помилка читання з архіву bzip2</target>
       </trans-unit>
-      <trans-unit id="34" approved="yes">
+      <trans-unit id="e8ea0e3e2335b39afd3cc35ab2092423" approved="yes">
         <source>Восстановление базы данных завершено!</source>
         <target state="final">Відновлення бази даних завершено!</target>
       </trans-unit>
-      <trans-unit id="35" approved="yes">
+      <trans-unit id="6b0e4614a17be03ed6281b96995e5e9f" approved="yes">
         <source>Экспорт базы данных при помощи DB Manager</source>
         <target state="final">Експорт бази даних за допомогою DB Manager</target>
       </trans-unit>
-      <trans-unit id="36" approved="yes">
+      <trans-unit id="915273e6399473269338eca2650a2976" approved="yes">
         <source>Ссылка: https://devcraft.club/downloads/db-manager.30/</source>
         <target state="final">Посилання: https://devcraft.club/downloads/db-manager.30/</target>
       </trans-unit>
-      <trans-unit id="37" approved="yes">
+      <trans-unit id="c392d48eb81b518bbb6107428e768967" approved="yes">
         <source>-- Дата создания:</source>
         <target state="final">-- Дата створення:</target>
       </trans-unit>
-      <trans-unit id="38" approved="yes">
+      <trans-unit id="79c65d5769ed5d6cdd94994f6ffa45ff" approved="yes">
         <source>-- Сервер:</source>
         <target state="final">-- Сервер:</target>
       </trans-unit>
-      <trans-unit id="39" approved="yes">
+      <trans-unit id="7df202491216d547b3385ca8a1951d1a" approved="yes">
         <source>-- База данных:</source>
         <target state="final">-- База даних:</target>
       </trans-unit>
-      <trans-unit id="40" approved="yes">
+      <trans-unit id="eb68c69a0511f9baa1918730ab7f6716" approved="yes">
         <source>-- Таблица:</source>
         <target state="final">-- Таблиця:</target>
       </trans-unit>
-      <trans-unit id="41" approved="yes">
+      <trans-unit id="4f47f138496aa219f1f799437d77deab" approved="yes">
         <source>-- Ключи для таблицы:</source>
         <target state="final">-- Ключі для таблиці:</target>
       </trans-unit>
-      <trans-unit id="42" approved="yes">
+      <trans-unit id="aa1bd7dc80aa1eb76f589ffaee1c736e" approved="yes">
         <source>-- Данные для таблицы:</source>
         <target state="final">-- Дані для таблиці:</target>
       </trans-unit>
-      <trans-unit id="43" approved="yes">
+      <trans-unit id="6d7d97c5b164cdfe1127907bb175a2ed" approved="yes">
         <source>Архивация архива не удалась!</source>
         <target state="final">Архівація архіву не вдалася!</target>
       </trans-unit>
-      <trans-unit id="44" approved="yes">
+      <trans-unit id="cd9c7f364a4928429c8e3dc7286d763c" approved="yes">
         <source>BZIP2 сжатие файла не удалось!</source>
         <target state="final">Стиснення файлу за допомогою BZIP2 не вдалося!</target>
       </trans-unit>
-      <trans-unit id="45" approved="yes">
+      <trans-unit id="1bc5cd70640f85d12e12b91cf4b16996" approved="yes">
         <source>Экспортированная база данных</source>
         <target state="final">Експортована база даних</target>
       </trans-unit>
-      <trans-unit id="46" approved="yes">
+      <trans-unit id="9e6a9b715dd4540e469c57dd347e2623" approved="yes">
         <source>Ошибка при отправке файла в Telegram:</source>
         <target state="final">Помилка при відправці файлу в Telegram:</target>
       </trans-unit>
-      <trans-unit id="47" approved="yes">
+      <trans-unit id="8a468e5addcbfaf562cf567465a19ec1" approved="yes">
         <source>Создание резервной копии завершено!</source>
         <target state="final">Створення резервної копії завершено!</target>
+      </trans-unit>
+      <trans-unit id="6cdef9d43a10cb87c38aa7d42fac93ef" approved="yes">
+        <source>[UPDATE] Добавлена проверка совместимости при экспорте базы данных</source>
+        <target state="final">[UPDATE] Додано перевірку сумісності під час експорту бази даних</target>
+      </trans-unit>
+      <trans-unit id="86bea350479afd46aec460911ba1f840" approved="yes">
+        <source>[FIX] Экспорт данных был поправлен</source>
+        <target state="final">[FIX] Експорт даних було виправлено</target>
+      </trans-unit>
+      <trans-unit id="5e2d35ec991bb930e2ff234c71727d1d" approved="yes">
+        <source>[UPDATE] Обновление документации классов для улучшенного понятия функционала</source>
+        <target state="final">[UPDATE] Оновлення документації класів для поліпшеного розуміння функціоналу</target>
+      </trans-unit>
+      <trans-unit id="a7100da822c9ceceeade95b147011eeb" approved="yes">
+        <source>[FIX] Исправление пути сохранения файлов на Windows</source>
+        <target state="final">[FIX] Виправлення шляху збереження файлів на Windows</target>
+      </trans-unit>
+      <trans-unit id="a485d8df3a257a443548d1cb0898a163" approved="yes">
+        <source>\$mhAjax не был инициирован!</source>
+        <target state="final">\$mhAjax не був ініційований!</target>
+      </trans-unit>
+      <trans-unit id="9ab30911bf9b632aa4bc55fe0b6b4579" approved="yes">
+        <source>\$config не был инициирован!</source>
+        <target state="final">\$config не був ініційований!</target>
+      </trans-unit>
+      <trans-unit id="86d0cd05e69b926baf91473eae80fae7" approved="yes">
+        <source>Восстановление прежних данных</source>
+        <target state="final">Відновлення попередніх даних</target>
+      </trans-unit>
+      <trans-unit id="79096dff5aaa98b82ca50e11fd701b8d" approved="yes">
+        <source>Ошибка вывода данных для Enum столбца {$columnName}</source>
+        <target state="final">Помилка виведення даних для переліку столбця {$columnName}</target>
+      </trans-unit>
+      <trans-unit id="223b8de03853c6f1e75b4eceed7af5f9" approved="yes">
+        <source>-- Проверка на существование индекса</source>
+        <target state="final">-- Перевірка на існування індексу</target>
+      </trans-unit>
+      <trans-unit id="231c7da944b8d352ab7178584564799b" approved="yes">
+        <source>Основные настройки</source>
+        <target state="final">Основні налаштування</target>
+      </trans-unit>
+      <trans-unit id="de43d58ac0cc0f657cb81255fc6baa4b" approved="yes">
+        <source>Настройка бота</source>
+        <target state="final">Налаштування бота</target>
+      </trans-unit>
+      <trans-unit id="787bbd1fda4268181407794160f08a03" approved="yes">
+        <source>Путь до файлов бд</source>
+        <target state="final">Шлях до файлів бд</target>
+      </trans-unit>
+      <trans-unit id="192cad1cb6faff10108e904b707e98f8" approved="yes">
+        <source>Включить экспорт в Telegram?</source>
+        <target state="final">Увімкнути експорт у Telegram?</target>
+      </trans-unit>
+      <trans-unit id="9bece219934804e2900c826082d3de6d" approved="yes">
+        <source>Совместимость вывода данных</source>
+        <target state="final">Сумісність виведення даних</target>
+      </trans-unit>
+      <trans-unit id="5ae1e924ef02ca2ae15381f5ffe20251" approved="yes">
+        <source>&lt;li&gt;&lt;b&gt;Общая совместимость&lt;/b&gt;: Сохраняет данные так, что их можно импортировать и в MySQL и в MariaDB&lt;/li&gt;</source>
+        <target state="final">&lt;li&gt;&lt;b&gt;Загальна сумісність&lt;/b&gt;: Зберігає дані так, що їх можна імпортувати як в MySQL, так і в MariaDB&lt;/li&gt;</target>
+      </trans-unit>
+      <trans-unit id="cb8a24f047b0cf33509c907e4d34cbe3" approved="yes">
+        <source>&lt;li&gt;&lt;b&gt;Текущая база данных&lt;/b&gt;: Вычисляет какая база данных используется и генерирует для неё файл экспорта. Совместимость может страдать&lt;/li&gt;</source>
+        <target state="final">&lt;li&gt;&lt;b&gt;Поточна база даних&lt;/b&gt;: Визначає яка база даних використовується і генерує для неї файл експорту. Сумісність може погіршитися&lt;/li&gt;</target>
+      </trans-unit>
+      <trans-unit id="b42088ba4e7ef8a5ae6472ac70e677ac" approved="yes">
+        <source>Общая совместимость</source>
+        <target state="final">Загальна сумісність</target>
+      </trans-unit>
+      <trans-unit id="ac4e183f99433597d6bc46e00eb7bfff" approved="yes">
+        <source>Текущая база данных</source>
+        <target state="final">Поточна база даних</target>
+      </trans-unit>
+      <trans-unit id="52cc2c8c0d8844a0e427c86b7c3aea9d" approved="yes">
+        <source>Вывод ключей</source>
+        <target state="final">Вивід ключів</target>
+      </trans-unit>
+      <trans-unit id="5afb56a6e94e85452113c66bfe012a06" approved="yes">
+        <source>В самый низ, после всех таблиц (рекомендуется)</source>
+        <target state="final">В самий низ, після всіх таблиць (рекомендується)</target>
+      </trans-unit>
+      <trans-unit id="1c11c9bde4d143302234416366112ee6" approved="yes">
+        <source>После самой таблицы</source>
+        <target state="final">Після самої таблиці</target>
+      </trans-unit>
+      <trans-unit id="e55534a44416ee5313a53d2a4931ea0f" approved="yes">
+        <source>Вывод данных</source>
+        <target state="final">Вивід даних</target>
+      </trans-unit>
+      <trans-unit id="1eb103dcae81c66e1e7352028a63c81a" approved="yes">
+        <source>Генерация данных</source>
+        <target state="final">Генерація даних</target>
+      </trans-unit>
+      <trans-unit id="0f26468f42b773dcc1c5e01836d5fea8" approved="yes">
+        <source>В группе (рекомендуется)</source>
+        <target state="final">У групі (рекомендується)</target>
+      </trans-unit>
+      <trans-unit id="fa29424166aaa64db8ffe010db41d124" approved="yes">
+        <source>Каждый по отдельности</source>
+        <target state="final">Кожен окремо</target>
+      </trans-unit>
+      <trans-unit id="088e76dbac990286520dd8a7ee32ba53" approved="yes">
+        <source>Архивировать данные?</source>
+        <target state="final">Архівувати дані?</target>
+      </trans-unit>
+      <trans-unit id="68e03c374888f7a3b9788be64622b2bf" approved="yes">
+        <source>Без архивации</source>
+        <target state="final">Без архівації</target>
+      </trans-unit>
+      <trans-unit id="fb6ac295b8438d7726725428c9b393e9" approved="yes">
+        <source>Архивировать как ZIP архив</source>
+        <target state="final">Архівувати як ZIP архів</target>
+      </trans-unit>
+      <trans-unit id="aa1256f44e43ebfaa74621468ecca2c7" approved="yes">
+        <source>Архивировать как BZip2 архив</source>
+        <target state="final">Архівувати як BZip2 архів</target>
+      </trans-unit>
+      <trans-unit id="0d0b2b0b31dbbed2947379a423eedb3f" approved="yes">
+        <source>Укажите токен вашего бота</source>
+        <target state="final">Вкажіть токен вашого бота</target>
+      </trans-unit>
+      <trans-unit id="a82ad3de71dd7ef865694e76c99a0be1" approved="yes">
+        <source>Укажите ID канала</source>
+        <target state="final">Вкажіть ID каналу</target>
+      </trans-unit>
+      <trans-unit id="c8b77a2c3cec600345c12df92bbfc268" approved="yes">
+        <source>Отправить сообщение в группу/канал</source>
+        <target state="final">Відправити повідомлення в групу/канал</target>
+      </trans-unit>
+      <trans-unit id="cd0e3d61a4c93666997ba4a9d83f82eb" approved="yes">
+        <source>Для проверки функционала или для оповещения, которое никак не связанно с новостью</source>
+        <target state="final">Для перевірки функціоналу або для оповіщення, яке ніяк не пов'язане з новиною</target>
+      </trans-unit>
+      <trans-unit id="54c38f682f1802e87897e9214c8047f2" approved="yes">
+        <source>&gt;Отправить сообщение&lt;/div&gt;</source>
+        <target state="final">&gt;Надіслати повідомлення&lt;/div&gt;</target>
+      </trans-unit>
+      <trans-unit id="2f30f631792735aaa8eeeb7fa7ef450c" approved="yes">
+        <source>-- Тип базы данных:</source>
+        <target state="final">-- Тип бази даних:</target>
+      </trans-unit>
+      <trans-unit id="b4dd80b0d4d5db889104be59e7979d8c" approved="yes">
+        <source>-- Альтернатива DROP INDEX IF EXISTS для MySQL как у MariaDB для проверки и удаления индекса</source>
+        <target state="final">-- Альтернатива DROP INDEX IF EXISTS для MySQL як у MariaDB для перевірки та видалення індексу</target>
+      </trans-unit>
+      <trans-unit id="a6be056986fb98fc9d02cec80b3b6a47" approved="yes">
+        <source>Укажите путь, где будут храниться файлы базы данных.&lt;br&gt;&lt;br&gt;&lt;em&gt;&lt;b&gt;По умолчанию:&lt;/b&gt;/engine/inc/maharder/_backup&lt;/em&gt;</source>
+        <target state="final">Вкажіть шлях, де зберігатимуться файли бази даних.&lt;br&gt;&lt;br&gt;&lt;em&gt;&lt;b&gt;За замовчуванням:&lt;/b&gt;/engine/inc/maharder/_backup&lt;/em&gt;</target>
+      </trans-unit>
+      <trans-unit id="2bf498fe7db949f0c4e05c5b0c1755d4" approved="yes">
+        <source>Если включено, то новый экспорт автоматически будет экспортирован в телеграм</source>
+        <target state="final">Якщо увімкнено, то новий експорт автоматично буде експортовано в телеграм</target>
+      </trans-unit>
+      <trans-unit id="a089b06325de0d4c5f9726bef73ce5ad" approved="yes">
+        <source>Вы решаете сами, в каком формате сохранять данные. По умолчанию: Общая совместимость&lt;br&gt;&lt;br&gt;Возможные варианты:&lt;ul&gt;</source>
+        <target state="final">Ви вирішуєте самі, у якому форматі зберігати дані. За замовчуванням: Загальна сумісність&lt;br&gt;&lt;br&gt;Можливі варіанти:&lt;ul&gt;</target>
+      </trans-unit>
+      <trans-unit id="818e31f14daedeb6a323ecdd2c113d6c" approved="yes">
+        <source>Куда выводить ключи (UNIQUE, ForeignKey, ...) при генерации скрипта?&lt;br&gt;&lt;br&gt;&lt;em&gt;&lt;b&gt;По умолчанию:&lt;/b&gt; в самый низ, после таблиц&lt;/em&gt;</source>
+        <target state="final">Куди виводити ключі (UNIQUE, ForeignKey, ...) під час генерації скрипта?&lt;br&gt;&lt;br&gt;&lt;em&gt;&lt;b&gt;За замовчуванням:&lt;/b&gt; в самий низ, після таблиць&lt;/em&gt;</target>
+      </trans-unit>
+      <trans-unit id="822676a1bf84a650a1ecc9e75818df84" approved="yes">
+        <source>Куда выводить данные таблиц при генерации скрипта?&lt;br&gt;&lt;br&gt;&lt;em&gt;&lt;b&gt;По умолчанию:&lt;/b&gt; в самый низ, после таблиц&lt;/em&gt;</source>
+        <target state="final">Куди виводити дані таблиць під час генерації скрипта?&lt;br&gt;&lt;br&gt;&lt;em&gt;&lt;b&gt;За замовчуванням:&lt;/b&gt; в самий низ, після таблиць&lt;/em&gt;</target>
+      </trans-unit>
+      <trans-unit id="8b7df27f07400dde82a4b1e9d6c53c81" approved="yes">
+        <source>Как выводить данные таблиц при генерации скрипта?&lt;br&gt;&lt;br&gt;&lt;em&gt;&lt;b&gt;По умолчанию:&lt;/b&gt; В группе&lt;/em&gt;</source>
+        <target state="final">Як виводити дані таблиць під час генерації скрипта?&lt;br&gt;&lt;br&gt;&lt;em&gt;&lt;b&gt;За замовчуванням:&lt;/b&gt; У групі&lt;/em&gt;</target>
+      </trans-unit>
+      <trans-unit id="919132d3a6ced8ce3669d1a227f77408" approved="yes">
+        <source>Если включено, то данные будут архивированы в выбранном формате&lt;br&gt;&lt;br&gt;&lt;em&gt;&lt;b&gt;По умолчанию:&lt;/b&gt; без архивации&lt;/em&gt;</source>
+        <target state="final">Якщо увімкнено, то дані будуть архівовані у вибраному форматі&lt;br&gt;&lt;br&gt;&lt;em&gt;&lt;b&gt;За замовчуванням:&lt;/b&gt; без архівування&lt;/em&gt;</target>
+      </trans-unit>
+      <trans-unit id="409c7d1297ecc484e030525ba9093faa" approved="yes">
+        <source>&gt;тут&lt;/a&gt;.</source>
+        <target state="final">&gt;тут&lt;/a&gt;.</target>
       </trans-unit>
     </body>
   </file>
