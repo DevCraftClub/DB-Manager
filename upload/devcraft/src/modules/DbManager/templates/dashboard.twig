@@ -1,0 +1,105 @@
+{% import 'core/includes/_macros/author.twig' as author %}
+{% set d = dashboard %}
+{% set app = d.app %}
+
+<div class="dc-dashboard"
+     data-site-id="{{ app.site_id }}"
+     data-version="{{ app.version }}">
+    <div class="remark info dc-dashboard-card dc-dashboard-hero mb-4">
+        <div class="dc-dashboard-app-header">
+            {% if app.icon %}
+                <span class="dc-dashboard-app-icon {{ app.icon }}" aria-hidden="true"></span>
+            {% endif %}
+            <div>
+                <h2 class="m-0">{{ app.name }}</h2>
+                <span class="badge inline bg-cyan fg-white mt-1">v{{ app.version }}</span>
+            </div>
+        </div>
+        {% if app.description %}
+            <p class="mt-3 mb-2">{{ app.description }}</p>
+        {% endif %}
+        <div class="mt-2">
+            {% if app.site_link %}
+                <a href="{{ app.site_link }}" class="button outline small mr-1" target="_blank" rel="noopener">
+                    <span class="mif-earth mr-1"></span> {{ 'Сайт'|trans }}
+                </a>
+            {% endif %}
+            {% if app.docs_link %}
+                <a href="{{ app.docs_link }}" class="button outline small mr-1" target="_blank" rel="noopener">
+                    <span class="mif-library mr-1"></span> {{ 'Документация'|trans }}
+                </a>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="grid dc-dashboard-grid">
+        <div class="row">
+            <div class="cell-md-6">
+                <div class="remark dc-dashboard-card">
+                    <h4 class="border-bottom bd-default pb-2 mb-3">{{ 'Автор'|trans }}</h4>
+                    {{ author.dashboard_card(d.author, d.lic_link) }}
+                </div>
+            </div>
+            <div class="cell-md-6">
+                <div class="remark dc-dashboard-card">
+                    <h4 class="border-bottom bd-default pb-2 mb-3">{{ 'Разделы'|trans }}</h4>
+                    {% if d.menu|length > 0 %}
+                        <table class="table striped subcompact">
+                            <thead>
+                            <tr>
+                                <th>{{ 'Раздел'|trans }}</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for item in d.menu %}
+                                <tr>
+                                    <td>
+                                        {% if item.icon %}<span class="{{ item.icon }} mr-1"></span>{% endif %}
+                                        {{ item.name }}
+                                    </td>
+                                    <td class="text-right">
+                                        <a href="{{ item.link }}" class="button small">{{ 'Открыть'|trans }}</a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    {% else %}
+                        <p class="fg-gray">{{ 'Разделы не настроены.'|trans }}</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        {% if d.changelog_latest %}
+            <div class="row">
+                <div class="cell-12">
+                    <div class="remark dc-dashboard-card">
+                        <h4 class="border-bottom bd-default pb-2 mb-3">
+                            {{ 'Последние изменения'|trans }}
+                            <a href="{{ d.changelog_url }}" class="button small link float-right">{{ 'Вся история'|trans }}</a>
+                        </h4>
+                        <p class="mb-2">
+                            {% if d.changelog_latest.version == 'Неопубликованное'|trans %}
+                                <strong>{% trans %}Неопубликованное{% endtrans %}</strong>
+                            {% else %}
+                                <strong>v{{ d.changelog_latest.version }}</strong>
+                            {% endif %}
+                            {% if d.changelog_latest.date %}
+                                <span class="text-small fg-gray">({{ d.changelog_latest.date }})</span>
+                            {% endif %}
+                        </p>
+                        {% if d.changelog_latest.teaser_items is defined and d.changelog_latest.teaser_items|length > 0 %}
+                            <ul class="mt-2">
+                                {% for item in d.changelog_latest.teaser_items %}
+                                    <li><span class="text-small fg-gray">{{ item.title }}:</span> {{ item.text|raw }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</div>

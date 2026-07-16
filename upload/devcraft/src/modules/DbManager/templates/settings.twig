@@ -1,0 +1,7 @@
+<h2>{{ 'Настройки'|trans }}</h2>
+{% include 'core/includes/form/settings_page.twig' with { form: form } %}
+
+<div class="remark mt-4">
+    <p class="text-small">{{ 'Для проверки функционала или для оповещения, которое никак не связано с новостью'|trans }}</p>
+    <button type="button" class="button js-dbm-send-tg">{{ 'Отправить сообщение в группу/канал'|trans }}</button>
+</div>

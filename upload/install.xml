@@ -2,17 +2,17 @@
 <dleplugin>
 	<name>DB Manager</name>
 	<description>Работа с базой данных, для правильного экспорта и импорта данных</description>
-	<icon>engine/inc/maharder/_modules/db_manager/assets/icon.png</icon>
-	<version>180.1.2</version>
-	<dleversion>18.0</dleversion>
+	<icon>devcraft/src/modules/DbManager/Public/icon.png</icon>
+	<version>200.1.3</version>
+	<dleversion>20.0</dleversion>
 	<versioncompare>greater</versioncompare>
 	<upgradeurl></upgradeurl>
 	<filedelete>1</filedelete>
-	<needplugin></needplugin>
+	<needplugin>DevCraft Admin</needplugin>
 	<mnotice>1</mnotice>
 	<mysqlinstall><![CDATA[]]></mysqlinstall>
-	<mysqlupgrade><![CDATA[INSERT INTO {prefix}_admin_sections (name, title, descr, icon, allow_groups) VALUES ('db_manager', 'DB Manager v180.1.2', 'Работа с базой данных, для правильного экспорта и импорта данных', 'engine/inc/maharder/_modules/db_manager/assets/icon.png', '1, 2') ON DUPLICATE KEY UPDATE title = 'DB Manager v180.1.2';]]></mysqlupgrade>
-	<mysqlenable><![CDATA[INSERT INTO {prefix}_admin_sections (name, title, descr, icon, allow_groups) VALUES ('db_manager', 'DB Manager v180.1.2', 'Работа с базой данных, для правильного экспорта и импорта данных', 'engine/inc/maharder/_modules/db_manager/assets/icon.png', '1, 2') ON DUPLICATE KEY UPDATE title = 'DB Manager v180.1.2';]]></mysqlenable>
+	<mysqlupgrade><![CDATA[INSERT INTO {prefix}_admin_sections (name, title, descr, icon, allow_groups) VALUES ('db_manager', 'DB Manager v200.1.3', 'Работа с базой данных, для правильного экспорта и импорта данных', 'devcraft/src/modules/DbManager/Public/icon.png', '1, 2') ON DUPLICATE KEY UPDATE title = 'DB Manager v200.1.3';]]></mysqlupgrade>
+	<mysqlenable><![CDATA[INSERT INTO {prefix}_admin_sections (name, title, descr, icon, allow_groups) VALUES ('db_manager', 'DB Manager v200.1.3', 'Работа с базой данных, для правильного экспорта и импорта данных', 'devcraft/src/modules/DbManager/Public/icon.png', '1, 2') ON DUPLICATE KEY UPDATE title = 'DB Manager v200.1.3';]]></mysqlenable>
 	<mysqldisable><![CDATA[DELETE FROM {prefix}_admin_sections WHERE name = 'db_manager';]]></mysqldisable>
 	<mysqldelete><![CDATA[DELETE FROM {prefix}_admin_sections WHERE name = 'db_manager';]]></mysqldelete>
 	<phpinstall><![CDATA[]]></phpinstall>
@@ -20,14 +20,5 @@
 	<phpenable><![CDATA[]]></phpenable>
 	<phpdisable><![CDATA[]]></phpdisable>
 	<phpdelete><![CDATA[]]></phpdelete>
-	<notice><![CDATA[<ul><li><b>Ссылка на плагин</b>: <a href="https://devcraft.club/downloads/db-manager.30/" target="_blank">перейти</a></li><li><b>Документация</b>: <a href="https://readme.devcraft.club/latest/dev/db_manager/install/" target="_blank">перейти</a></li></ul>]]></notice>
-	<file name="engine/inc/maharder/_includes/extras/paths.php">
-		<operation action="before">
-			<searchcode><![CDATA[			 // Custom paths //]]></searchcode>
-			<replacecode><![CDATA[// DB Manager
-	MH_MODULES . '/db_manager/utils',
-	// DB Manager]]></replacecode>
-			<enabled>1</enabled>
-		</operation>
-	</file>
+	<notice><![CDATA[<ul><li><b>Ссылка на плагин</b>: <a href="https://devcraft.club/downloads/db-manager.30/" target="_blank">перейти</a></li><li><b>Документация</b>: <a href="https://readme.devcraft.club/latest/dev/db_manager/install/" target="_blank">перейти</a></li><li><b>Требуется DevCraft Admin ≥ 200.4.0</b> (включая каталог <code>devcraft/vendor/</code> после <code>composer install</code>)</li><li>После установки выполните в каталоге <code>devcraft/</code>: <code>composer dump-autoload</code></li></ul>]]></notice>
 </dleplugin>
