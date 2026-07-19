@@ -1,9 +1,9 @@
 {
-	"version": "180.1.2",
+	"version": "200.1.3",
 	"status": "dev",
-	"dle": ["17.x", "18.0"],
+	"dle": ["20.x"],
 	"php": ["8.3"],
-	"mhadmin": "173.3.5",
+	"devcraft": "200.4.0",
 	"name": "DB Manager",
 	"description": "Управление базой данных"
 }

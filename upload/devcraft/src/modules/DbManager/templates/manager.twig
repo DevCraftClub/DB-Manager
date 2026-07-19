@@ -1,0 +1,84 @@
+<h2>{{ page_title|default('Управление базой данных'|trans) }}</h2>
+
+<form class="form js-dbm-manager-form">
+    <div class="row">
+        <div class="cell-md-6">
+            <h4>{{ 'Таблицы'|trans }}</h4>
+            <table class="table striped row-border" id="sqlTables">
+                <thead>
+                <tr>
+                    <th class="text-center" style="width:3rem">
+                        <input type="checkbox" data-role="checkbox" class="js-dbm-all-tables" checked>
+                    </th>
+                    <th>{{ 'Название'|trans }}</th>
+                    <th class="text-right">{{ 'Кол-во данных'|trans }}</th>
+                    <th class="text-right">{{ 'Вес'|trans }}</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for table in tables %}
+                    <tr>
+                        <td class="text-center">
+                            <input type="checkbox" data-role="checkbox" name="table[]" value="{{ table.getName() }}" checked>
+                        </td>
+                        <td>{{ table.getName() }}</td>
+                        <td class="text-right">{{ table.getEntries() }}</td>
+                        <td class="text-right">{{ table.getFormattedSize() }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="cell-md-6">
+            <h4>{{ 'Резервные копии'|trans }}</h4>
+            <table class="table striped row-border" id="exportedTable">
+                <thead>
+                <tr>
+                    <th>{{ 'Название'|trans }}</th>
+                    <th>{{ 'Тип'|trans }}</th>
+                    <th class="text-center">{{ 'Действие'|trans }}</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for name, info in exported %}
+                    <tr>
+                        <td title="{{ info.path }}">{{ info.name }}</td>
+                        <td>{{ info.ext }}</td>
+                        <td class="text-center">
+                            <div class="button-group">
+                                <button type="button" class="button small js-dbm-download" data-name="{{ name }}" title="{{ 'Скачать'|trans }}">
+                                    <span class="mif-download"></span>
+                                </button>
+                                <button type="button" class="button small alert js-dbm-delete" data-name="{{ name }}" title="{{ 'Удалить'|trans }}">
+                                    <span class="mif-bin"></span>
+                                </button>
+                                <button type="button" class="button small info js-dbm-import" data-name="{{ name }}" title="{{ 'Восстановить'|trans }}">
+                                    <span class="mif-upload"></span>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="3" class="text-center text-muted">{{ 'Нет файлов резервных копий'|trans }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</form>
+
+<div class="remark mt-4">
+    <button type="button" class="button primary js-dbm-export">
+        <span class="mif-floppy-disk"></span> {{ 'Экспортировать'|trans }}
+    </button>
+</div>
+
+<form id="js-dbm-download-form" method="POST" action="{{ ajax_base_url }}" class="d-none">
+    <input type="hidden" name="mod" value="{{ mod }}">
+    <input type="hidden" name="controller" value="admin">
+    <input type="hidden" name="method" value="download_file">
+    <input type="hidden" name="user_hash" value="{{ dle_login_hash }}">
+    <input type="hidden" name="data" value="">
+</form>
