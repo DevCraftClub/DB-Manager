@@ -11,8 +11,8 @@ use DevCraft\Core\Http\JsonResponse;
 use DevCraft\Core\Support\DataManager;
 use DevCraft\Core\Config\DevCraftConfig;
 use DevCraft\Core\Admin\SettingsFormService;
-use DevCraft\Core\Interfaces\AjaxHandlerInterface;
 use DevCraft\Core\Interfaces\ResponseInterface;
+use DevCraft\Core\Interfaces\AjaxHandlerInterface;
 use DevCraft\Modules\DbManager\Services\BackupPathHelper;
 
 /**

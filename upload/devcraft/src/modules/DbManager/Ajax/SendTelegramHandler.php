@@ -6,8 +6,8 @@ namespace DevCraft\Modules\DbManager\Ajax;
 
 use DevCraft\Core\Http\AjaxRequest;
 use DevCraft\Core\Http\JsonResponse;
-use DevCraft\Core\Interfaces\AjaxHandlerInterface;
 use DevCraft\Core\Interfaces\ResponseInterface;
+use DevCraft\Core\Interfaces\AjaxHandlerInterface;
 
 /**
  * AJAX-обработчик тестовой отправки сообщения в Telegram.

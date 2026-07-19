@@ -10,8 +10,8 @@ use DevCraft\Core\Application;
 use DevCraft\Core\Http\AjaxRequest;
 use DevCraft\Core\Http\JsonResponse;
 use DevCraft\Core\Support\DataManager;
-use DevCraft\Core\Interfaces\AjaxHandlerInterface;
 use DevCraft\Core\Interfaces\ResponseInterface;
+use DevCraft\Core\Interfaces\AjaxHandlerInterface;
 use DevCraft\Modules\DbManager\Services\DbSqlLoader;
 use DevCraft\Modules\DbManager\Services\SqlExporter;
 use DevCraft\Modules\DbManager\Services\SqlTableParser;
@@ -35,8 +35,8 @@ final class ExportHandler implements AjaxHandlerInterface {
 			);
 		}
 
-		$settings = DataManager::getConfig('db_manager');
-		$dbName   = DBNAME;
+		$settings  = DataManager::getConfig('db_manager');
+		$dbName    = DBNAME;
 		$outputDir = BackupPathHelper::exportDir($settings);
 
 		if(!is_dir($outputDir)) {
@@ -49,8 +49,8 @@ final class ExportHandler implements AjaxHandlerInterface {
 		SqlExporter::setConfig($settings);
 		SqlExporter::setDbSqlLoader($loader);
 
-		$dbType    = SqlExporter::detectDatabaseType();
-		$dbVersion = SqlExporter::getDatabaseVersion();
+		$dbType       = SqlExporter::detectDatabaseType();
+		$dbVersion    = SqlExporter::getDatabaseVersion();
 		$parsedTables = [];
 
 		foreach($tables as $table) {
@@ -161,7 +161,7 @@ final class ExportHandler implements AjaxHandlerInterface {
 			$zip         = new ZipArchive();
 			$zipFileName = str_replace('.sql', '.zip', $sqlFile);
 
-			if($zip->open($zipFileName, ZipArchive::CREATE | ZipArchive::OVERWRITE) !== true) {
+			if($zip->open($zipFileName, ZipArchive::CREATE|ZipArchive::OVERWRITE) !== true) {
 				return JsonResponse::fail(__('Ошибка'), __('Архивация архива не удалась!'), 'validation', 500);
 			}
 
@@ -180,12 +180,13 @@ final class ExportHandler implements AjaxHandlerInterface {
 
 		if(!empty($settings['export_to_telegram'])) {
 			try {
-				$extension = match ($zipMode) {
+				$extension  = match ($zipMode) {
 					'zip'   => 'zip',
 					'bzip2' => 'bz2',
 					default => 'sql',
 				};
-				$filePath   = DataManager::joinPaths($settings['export_path'] ?? BackupPathHelper::DEFAULT_EXPORT_PATH, "{$sqlFileName}.{$extension}");
+				$filePath   =
+					DataManager::joinPaths($settings['export_path'] ?? BackupPathHelper::DEFAULT_EXPORT_PATH, "{$sqlFileName}.{$extension}");
 				$fileToSend = new \CURLFile(DataManager::joinPaths(ROOT_DIR, $filePath));
 				$tgUrl      = "https://api.telegram.org/bot{$settings['tg_token']}/sendDocument";
 
@@ -220,7 +221,7 @@ final class ExportHandler implements AjaxHandlerInterface {
 		}
 
 		return JsonResponse::toast(__('Создание резервной копии завершено!'), [
-			'file' => "{$sqlFileName}." . ($zipMode === 'raw' ? 'sql' : ($zipMode === 'zip' ? 'zip' : 'bz2')),
+			'file' => "{$sqlFileName}." . ($zipMode === 'raw'? 'sql' : ($zipMode === 'zip'? 'zip' : 'bz2')),
 		]);
 	}
 

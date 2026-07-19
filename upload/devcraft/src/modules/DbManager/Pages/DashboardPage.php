@@ -25,6 +25,7 @@ final class DashboardPage extends AbstractPage {
 			$latest['teaser_items'] = $changelog[0]->teaserItems(3);
 		}
 
+		$mod  = $plugin?->mod() ?? 'db_manager';
 		$menu = [];
 
 		foreach($context->menu() as $link) {
@@ -41,7 +42,7 @@ final class DashboardPage extends AbstractPage {
 		}
 
 		return [
-			'view' => 'dbmanager/dashboard.twig',
+			'view' => 'pages/dashboard.twig',
 			'data' => [
 				'page_title' => (string) ($meta['name'] ?? 'DB Manager'),
 				'dashboard'  => [
@@ -53,13 +54,15 @@ final class DashboardPage extends AbstractPage {
 						'docs_link'   => (string) ($meta['docsLink'] ?? ''),
 						'site_link'   => (string) ($meta['siteLink'] ?? ''),
 						'site_id'     => (int) ($meta['siteId'] ?? 0),
-						'code'        => (string) ($meta['module_code'] ?? 'db_manager'),
+						'code'        => (string) ($meta['module_code'] ?? $mod),
 					],
 					'author'           => $context->author()->toArray(),
 					'lic_link'         => $context->licLink(),
 					'menu'             => $menu,
 					'changelog_latest' => $latest,
-					'changelog_url'    => '?mod=db_manager&action=changelog',
+					'changelog_url'    => '?mod=' . $mod . '&action=changelog',
+					'show_assets'      => false,
+					'show_update'      => false,
 				],
 			],
 		];

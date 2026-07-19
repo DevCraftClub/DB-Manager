@@ -16,6 +16,19 @@ use DevCraft\Modules\DbManager\Ajax\SendTelegramHandler;
 
 /**
  * Манифест модуля DB Manager.
+ *
+ * Гидрируется в `ModuleManifest` через `ModuleManifest::fromManifest()` — сам
+ * файл возвращает массив в форме, ожидаемой этим методом.
+ *
+ * @return array{
+ *     mod: string,
+ *     code?: string,
+ *     meta?: array<string, mixed>,
+ *     menu?: list<AdminLink>,
+ *     ajax?: array{controller?: string, methods?: array<string, class-string>},
+ *     changelog?: array<int, array<string, mixed>>,
+ *     assets?: array<string, list<string>>,
+ * }
  */
 return [
 	'mod'       => 'db_manager',

@@ -8,8 +8,8 @@ use DevCraft\Core\Http\AjaxRequest;
 use DevCraft\Core\Http\FileResponse;
 use DevCraft\Core\Http\JsonResponse;
 use DevCraft\Core\Support\DataManager;
-use DevCraft\Core\Interfaces\AjaxHandlerInterface;
 use DevCraft\Core\Interfaces\ResponseInterface;
+use DevCraft\Core\Interfaces\AjaxHandlerInterface;
 use DevCraft\Modules\DbManager\Services\BackupPathHelper;
 
 /**
@@ -18,7 +18,7 @@ use DevCraft\Modules\DbManager\Services\BackupPathHelper;
 final class DownloadFileHandler implements AjaxHandlerInterface {
 
 	public function handle(AjaxRequest $request): ResponseInterface {
-		$file = filter_var_array($request->data, [
+		$file     = filter_var_array($request->data, [
 			'file_name' => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
 		]);
 		$settings = DataManager::getConfig('db_manager');

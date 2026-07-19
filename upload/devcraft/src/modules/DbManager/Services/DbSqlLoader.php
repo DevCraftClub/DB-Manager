@@ -48,7 +48,7 @@ final class DbSqlLoader {
 	 * Убирает префикс DLE из имени таблицы для DataLoaderService.
 	 */
 	public function logicalTableName(string $physicalTableName): string {
-		$prefix = defined('PREFIX') ? PREFIX . '_' : '';
+		$prefix = defined('PREFIX')? PREFIX . '_' : '';
 
 		if($prefix !== '' && str_starts_with($physicalTableName, $prefix)) {
 			return substr($physicalTableName, strlen($prefix));

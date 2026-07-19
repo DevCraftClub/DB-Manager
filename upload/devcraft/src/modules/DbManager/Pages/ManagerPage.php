@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace DevCraft\Modules\DbManager\Pages;
 
 use DevCraft\Core\Application;
-use DevCraft\Core\Abstracts\AbstractPage;
 use DevCraft\Core\Support\DataManager;
-use DevCraft\Modules\DbManager\Services\DbSqlLoader;
+use DevCraft\Core\Abstracts\AbstractPage;
 use DevCraft\Modules\DbManager\Services\SqlTable;
+use DevCraft\Modules\DbManager\Services\DbSqlLoader;
 use DevCraft\Modules\DbManager\Services\BackupPathHelper;
 
 /**
@@ -21,12 +21,12 @@ final class ManagerPage extends AbstractPage {
 
 		$this->addBreadcrumb($pageName);
 
-		$settings = DataManager::getConfig('db_manager');
-		$app      = Application::instance();
-		$loader   = new DbSqlLoader($app->database(), $app->dataLoader());
-		$dbName   = DBNAME;
-		$tables   = $loader->loadSql('SHOW TABLES');
-		$tableId  = 'Tables_in_' . $dbName;
+		$settings   = DataManager::getConfig('db_manager');
+		$app        = Application::instance();
+		$loader     = new DbSqlLoader($app->database(), $app->dataLoader());
+		$dbName     = DBNAME;
+		$tables     = $loader->loadSql('SHOW TABLES');
+		$tableId    = 'Tables_in_' . $dbName;
 		$tableInfos = [];
 
 		foreach($tables as $row) {

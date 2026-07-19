@@ -5,7 +5,10 @@ declare(strict_types=1);
 /**
  * История изменений модуля DB Manager.
  *
- * @return \DevCraft\Types\Changelog[]
+ * Гидрируется в `Changelog[]` через `Changelog::listFromManifest()` /
+ * `ModuleManifest::fromManifest()` — сам файл возвращает массив массивов.
+ *
+ * @return array<int, array{version: string, date?: string, changes?: array<string, list<string>>}>
  */
 return [
 	[
