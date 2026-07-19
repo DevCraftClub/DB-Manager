@@ -8,6 +8,8 @@
 
 Плагин для экспорта и импорта базы данных DLE с учётом внешних ключей (Foreign Keys). Работает как модуль **DevCraft Admin** (версия **200.1.3** для DLE 20.0).
 
+Сайт: https://devcraft.club/downloads/db-manager.30/
+
 ## Установка
 
 Полная инструкция: [документация](https://readme.devcraft.club/latest/dev/db_manager/install/).
