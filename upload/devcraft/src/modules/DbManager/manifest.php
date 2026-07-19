@@ -28,7 +28,6 @@ return [
 		'docsLink'    => 'https://readme.devcraft.club/latest/dev/db_manager/install/',
 		'siteLink'    => 'https://devcraft.club/downloads/db-manager.30/',
 		'siteId'      => 30,
-		'licLink'     => 'https://devcraft.club/pages/licence-agreement/',
 	],
 	'menu'      => [
 		AdminLink::page(__('Главная'), 'dashboard', DashboardPage::class, 'mif-home', 'db_manager'),
