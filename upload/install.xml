@@ -3,7 +3,7 @@
 	<name>DB Manager</name>
 	<description>Работа с базой данных, для правильного экспорта и импорта данных</description>
 	<icon>devcraft/src/modules/DbManager/Public/icon.png</icon>
-	<version>200.1.3</version>
+	<version>200.1.4</version>
 	<dleversion>20.0</dleversion>
 	<versioncompare>greater</versioncompare>
 	<upgradeurl></upgradeurl>
@@ -11,8 +11,8 @@
 	<needplugin>DevCraft Admin</needplugin>
 	<mnotice>1</mnotice>
 	<mysqlinstall><![CDATA[]]></mysqlinstall>
-	<mysqlupgrade><![CDATA[INSERT INTO {prefix}_admin_sections (name, title, descr, icon, allow_groups) VALUES ('db_manager', 'DB Manager v200.1.3', 'Работа с базой данных, для правильного экспорта и импорта данных', 'devcraft/src/modules/DbManager/Public/icon.png', '1, 2') ON DUPLICATE KEY UPDATE title = 'DB Manager v200.1.3';]]></mysqlupgrade>
-	<mysqlenable><![CDATA[INSERT INTO {prefix}_admin_sections (name, title, descr, icon, allow_groups) VALUES ('db_manager', 'DB Manager v200.1.3', 'Работа с базой данных, для правильного экспорта и импорта данных', 'devcraft/src/modules/DbManager/Public/icon.png', '1, 2') ON DUPLICATE KEY UPDATE title = 'DB Manager v200.1.3';]]></mysqlenable>
+	<mysqlupgrade><![CDATA[INSERT INTO {prefix}_admin_sections (name, title, descr, icon, allow_groups) VALUES ('db_manager', 'DB Manager v200.1.4', 'Работа с базой данных, для правильного экспорта и импорта данных', 'devcraft/src/modules/DbManager/Public/icon.png', '1, 2') ON DUPLICATE KEY UPDATE title = 'DB Manager v200.1.4';]]></mysqlupgrade>
+	<mysqlenable><![CDATA[INSERT INTO {prefix}_admin_sections (name, title, descr, icon, allow_groups) VALUES ('db_manager', 'DB Manager v200.1.4', 'Работа с базой данных, для правильного экспорта и импорта данных', 'devcraft/src/modules/DbManager/Public/icon.png', '1, 2') ON DUPLICATE KEY UPDATE title = 'DB Manager v200.1.4';]]></mysqlenable>
 	<mysqldisable><![CDATA[DELETE FROM {prefix}_admin_sections WHERE name = 'db_manager';]]></mysqldisable>
 	<mysqldelete><![CDATA[DELETE FROM {prefix}_admin_sections WHERE name = 'db_manager';]]></mysqldelete>
 	<phpinstall><![CDATA[]]></phpinstall>

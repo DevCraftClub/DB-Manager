@@ -6,7 +6,7 @@
 
 # DB Manager
 
-Плагин для экспорта и импорта базы данных DLE с учётом внешних ключей (Foreign Keys). Работает как модуль **DevCraft Admin** (версия **200.1.3** для DLE 20.0).
+Плагин для экспорта и импорта базы данных DLE с учётом внешних ключей (Foreign Keys). Работает как модуль **DevCraft Admin** (версия **200.1.4** для DLE 20.0).
 
 Сайт: https://devcraft.club/downloads/db-manager.30/
 
@@ -31,7 +31,7 @@
 
 Автоматический перенос конфигурации **не выполняется**.
 
-1. Установите [DevCraft Admin](https://readme.devcraft.club/latest/dev/devcraft_admin/install/) и DB Manager 200.1.3.
+1. Установите [DevCraft Admin](https://readme.devcraft.club/latest/dev/devcraft_admin/install/) и DB Manager 200.1.4.
 2. Скопируйте настройки модуля:
 
 ```bash
