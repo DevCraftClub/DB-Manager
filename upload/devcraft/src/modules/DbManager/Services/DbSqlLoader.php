@@ -13,8 +13,7 @@ use DevCraft\Core\Support\DataLoaderService;
 final class DbSqlLoader {
 
 	public function __construct(
-		private readonly DatabaseGateway   $db,
-		private readonly DataLoaderService $dataLoader,
+		private readonly DatabaseGateway $db,
 	) {}
 
 	/**
@@ -41,7 +40,7 @@ final class DbSqlLoader {
 	 * @return array<int, array<string, mixed>>
 	 */
 	public function loadTable(string $physicalTableName): array {
-		return $this->dataLoader->loadData(['table' => $this->logicalTableName($physicalTableName)]);
+		return DataLoaderService::loadData(['table' => $this->logicalTableName($physicalTableName)]);
 	}
 
 	/**

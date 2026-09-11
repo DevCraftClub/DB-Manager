@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace DevCraft\Modules\DbManager\Ajax;
 
+use DevCraft\Modules\DbManager\DbManagerIdentity;
+
 use DateTime;
 use ZipArchive;
 use DevCraft\Core\Application;
@@ -35,7 +37,7 @@ final class ExportHandler implements AjaxHandlerInterface {
 			);
 		}
 
-		$settings  = DataManager::getConfig('db_manager');
+		$settings  = DataManager::getConfig(DbManagerIdentity::code());
 		$dbName    = DBNAME;
 		$outputDir = BackupPathHelper::exportDir($settings);
 
@@ -44,7 +46,7 @@ final class ExportHandler implements AjaxHandlerInterface {
 		}
 
 		$app    = Application::instance();
-		$loader = new DbSqlLoader($app->database(), $app->dataLoader());
+		$loader = new DbSqlLoader($app->database());
 
 		SqlExporter::setConfig($settings);
 		SqlExporter::setDbSqlLoader($loader);
