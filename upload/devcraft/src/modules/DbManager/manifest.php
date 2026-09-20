@@ -36,7 +36,7 @@ return ModuleManifestBuilder::create()
 	->version('200.1.4')
 	->description(__('Работа с базой данных, для правильного экспорта и импорта данных'))
 	->icon('mif-database')
-	->docsLink('https://readme.devcraft.club/latest/dev/db_manager/install/')
+	->docsLink('https://readme.devcraft.club/dev/dle/db_manager/200.1.4/getting_started')
 	->siteLink('https://devcraft.club/downloads/db-manager.30/')
 	->siteId(30)
 	->menu([

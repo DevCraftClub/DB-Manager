@@ -11,9 +11,14 @@ use DevCraft\Builders\ChangelogBuilder;
  */
 return [
 	ChangelogBuilder::create('200.1.4')
-		->date('2026-09-11')
+		->date('2026-09-20')
 		->changed([
 			__('Манифест и журнал изменений переведены на fluent `ModuleManifestBuilder` / `ChangelogBuilder`.'),
+			__('install.xml: иконка — путь к Public/icon.png, allow_groups 1,2, notice — сайт автора и документация.'),
+			__('Ссылка на документацию — гайд версии 200.1.4.'),
+		])
+		->removed([
+			__('Дубли локалей locales/*/db-manager.xliff — оставлен db_manager.xliff.'),
 		])
 		->build(),
 	ChangelogBuilder::create('200.1.3')

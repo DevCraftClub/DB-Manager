@@ -12,7 +12,7 @@
 
 ## Установка
 
-Полная инструкция: [документация](https://readme.devcraft.club/latest/dev/db_manager/install/).
+Полная инструкция: [документация](https://readme.devcraft.club/dev/dle/db_manager/200.1.4/getting_started).
 
 ### Требования
 
@@ -31,7 +31,7 @@
 
 Автоматический перенос конфигурации **не выполняется**.
 
-1. Установите [DevCraft Admin](https://readme.devcraft.club/latest/dev/devcraft_admin/install/) и DB Manager 200.1.4.
+1. Установите [DevCraft Admin](https://readme.devcraft.club/dev/dle/devcraft_admin/200.4.1/install) и DB Manager 200.1.4.
 2. Скопируйте настройки модуля:
 
 ```bash
@@ -45,6 +45,6 @@ cp engine/inc/maharder/_config/db_manager.json devcraft/config/db_manager.json
 composer dump-autoload
 ```
 
-5. Удалите или отключите legacy-файлы MHAdmin для DB Manager (см. [миграция в документации](https://readme.devcraft.club/latest/dev/db_manager/migration/)).
+5. Удалите или отключите legacy-файлы MHAdmin для DB Manager (см. [миграцию](https://readme.devcraft.club/dev/dle/db_manager/200.1.4/migration)).
 
-Подробнее: [migration.md в mhdocs](https://readme.devcraft.club/latest/dev/db_manager/migration/).
+Подробнее: [миграция в документации](https://readme.devcraft.club/dev/dle/db_manager/200.1.4/migration).

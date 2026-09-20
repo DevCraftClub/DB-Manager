@@ -10,15 +10,31 @@
 	<filedelete>1</filedelete>
 	<needplugin>DevCraft Admin</needplugin>
 	<mnotice>1</mnotice>
-	<mysqlinstall><![CDATA[]]></mysqlinstall>
-	<mysqlupgrade><![CDATA[INSERT INTO {prefix}_admin_sections (name, title, descr, icon, allow_groups) VALUES ('db_manager', 'DB Manager v200.1.4', 'Работа с базой данных, для правильного экспорта и импорта данных', 'devcraft/src/modules/DbManager/Public/icon.png', '1, 2') ON DUPLICATE KEY UPDATE title = 'DB Manager v200.1.4';]]></mysqlupgrade>
-	<mysqlenable><![CDATA[INSERT INTO {prefix}_admin_sections (name, title, descr, icon, allow_groups) VALUES ('db_manager', 'DB Manager v200.1.4', 'Работа с базой данных, для правильного экспорта и импорта данных', 'devcraft/src/modules/DbManager/Public/icon.png', '1, 2') ON DUPLICATE KEY UPDATE title = 'DB Manager v200.1.4';]]></mysqlenable>
-	<mysqldisable><![CDATA[DELETE FROM {prefix}_admin_sections WHERE name = 'db_manager';]]></mysqldisable>
-	<mysqldelete><![CDATA[DELETE FROM {prefix}_admin_sections WHERE name = 'db_manager';]]></mysqldelete>
+	<mysqlinstall><![CDATA[
+INSERT INTO {prefix}_admin_sections (name, title, descr, icon, allow_groups)
+VALUES ('db_manager', 'DB Manager v200.1.4', 'Работа с базой данных, для правильного экспорта и импорта данных', 'devcraft/src/modules/DbManager/Public/icon.png', '1,2')
+ON DUPLICATE KEY UPDATE title = 'DB Manager v200.1.4', descr = 'Работа с базой данных, для правильного экспорта и импорта данных', icon = 'devcraft/src/modules/DbManager/Public/icon.png', allow_groups = '1,2';
+]]></mysqlinstall>
+	<mysqlupgrade><![CDATA[
+INSERT INTO {prefix}_admin_sections (name, title, descr, icon, allow_groups)
+VALUES ('db_manager', 'DB Manager v200.1.4', 'Работа с базой данных, для правильного экспорта и импорта данных', 'devcraft/src/modules/DbManager/Public/icon.png', '1,2')
+ON DUPLICATE KEY UPDATE title = 'DB Manager v200.1.4', descr = 'Работа с базой данных, для правильного экспорта и импорта данных', icon = 'devcraft/src/modules/DbManager/Public/icon.png', allow_groups = '1,2';
+]]></mysqlupgrade>
+	<mysqlenable><![CDATA[
+INSERT INTO {prefix}_admin_sections (name, title, descr, icon, allow_groups)
+VALUES ('db_manager', 'DB Manager v200.1.4', 'Работа с базой данных, для правильного экспорта и импорта данных', 'devcraft/src/modules/DbManager/Public/icon.png', '1,2')
+ON DUPLICATE KEY UPDATE title = 'DB Manager v200.1.4', descr = 'Работа с базой данных, для правильного экспорта и импорта данных', icon = 'devcraft/src/modules/DbManager/Public/icon.png', allow_groups = '1,2';
+]]></mysqlenable>
+	<mysqldisable><![CDATA[
+DELETE FROM {prefix}_admin_sections WHERE name = 'db_manager';
+]]></mysqldisable>
+	<mysqldelete><![CDATA[
+DELETE FROM {prefix}_admin_sections WHERE name = 'db_manager';
+]]></mysqldelete>
 	<phpinstall><![CDATA[]]></phpinstall>
 	<phpupgrade><![CDATA[]]></phpupgrade>
 	<phpenable><![CDATA[]]></phpenable>
 	<phpdisable><![CDATA[]]></phpdisable>
 	<phpdelete><![CDATA[]]></phpdelete>
-	<notice><![CDATA[<ul><li><b>Ссылка на плагин</b>: <a href="https://devcraft.club/downloads/db-manager.30/" target="_blank">перейти</a></li><li><b>Документация</b>: <a href="https://readme.devcraft.club/latest/dev/db_manager/install/" target="_blank">перейти</a></li><li><b>Требуется DevCraft Admin ≥ 200.4.0</b> (включая каталог <code>devcraft/vendor/</code> после <code>composer install</code>)</li><li>После установки выполните в каталоге <code>devcraft/</code>: <code>composer dump-autoload</code></li></ul>]]></notice>
+	<notice><![CDATA[<ul><li><b>Ссылка на плагин</b>: <a href="https://devcraft.club/downloads/db-manager.30/" target="_blank">перейти</a></li><li><b>Документация</b>: <a href="https://readme.devcraft.club/latest/dev/db_manager/install/" target="_blank">перейти</a></li></ul>]]></notice>
 </dleplugin>
