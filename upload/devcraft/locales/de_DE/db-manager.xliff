@@ -414,6 +414,22 @@
         <source>Удаление прошло успешно</source>
         <target state="needs-translation">Удаление прошло успешно</target>
       </trans-unit>
+      <trans-unit id="af7098fc690aa19b54bb3df4e43616aa">
+        <source>Не заполненные поля!</source>
+        <target state="needs-translation">Не заполненные поля!</target>
+      </trans-unit>
+      <trans-unit id="3c9c6e3d82de40a3c0eaa5eba292fc9a">
+        <source>Поля с токеном и ID чата должны быть заполнены!</source>
+        <target state="needs-translation">Поля с токеном и ID чата должны быть заполнены!</target>
+      </trans-unit>
+      <trans-unit id="56fe50fcb17c93e9b59e8bed5e1c2d0f">
+        <source>Сеть или сервер недоступен</source>
+        <target state="needs-translation">Сеть или сервер недоступен</target>
+      </trans-unit>
+      <trans-unit id="835b7488e547af673259131325a88e74">
+        <source>Восстановить базу данных из этого файла?</source>
+        <target state="needs-translation">Восстановить базу данных из этого файла?</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
